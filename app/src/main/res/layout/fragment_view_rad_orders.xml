@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    tools:context=".fragment.View_Rad_Orders">
+
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="5dp"
+        android:weightSum="4">
+
+        <Spinner
+            android:id="@+id/spinner_photo_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical"
+            style="@style/spinner_style"
+            android:layout_marginHorizontal="3dp" />
+
+        <EditText
+            android:id="@+id/et_number_of_records"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="عدد السجلات"
+            android:inputType="number"
+            android:background="@drawable/edit_text_background"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:layout_marginHorizontal="10dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight=".5"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/imgbtn_search"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/search" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/row_header_rad_orders"
+        android:id="@+id/header"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RV_red_orders"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+
+        tools:listitem="@layout/row_rad_orders" />
+
+    <LinearLayout
+        android:id="@+id/emptyEfile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/search_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="15sp"
+            android:text="لا يوجد تقارير أشعة للمريض"
+            android:textColor="#d9000000"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/fileimg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/xrayphoto" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

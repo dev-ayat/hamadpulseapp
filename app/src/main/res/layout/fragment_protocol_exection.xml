@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/backgroundcolor"
+    android:clickable="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ProtocolExecutionFragment">
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/protocol_header"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Reason"
+                android:layout_weight="1"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/txt_Reason"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Protocol"
+                android:layout_weight="1"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/txt_Protocol"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Indication"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:id="@+id/txt_Indication"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/PremedicationTitle"
+            android:background="@color/darkGray"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/protocol_header"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Premedication"
+            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:layout_marginVertical="30dp" />
+
+        <LinearLayout
+
+            android:id="@+id/PremedicationsLayout1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/PremedicationTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtPremedications"
+                android:layout_width="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_height="150dp"
+                android:layout_weight="6"
+                android:padding="10dp"
+                android:background="@drawable/textview_shape" />
+
+            <Spinner
+                android:id="@+id/PremedicationsStatus_SP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/PremedicationsStatus"
+                android:layout_marginTop="20dp"
+                style="@style/spinner_style"
+                android:layout_marginHorizontal="7dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/PremedicationsLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/PremedicationsLayout1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+
+            >
+
+            <include layout="@layout/pre_post_chemothorpy_header" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/PremedicationRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:id="@+id/ChemothropyTitles"
+            app:layout_constraintTop_toBottomOf="@+id/PremedicationsLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chemotherapy"
+            android:background="@color/darkGray"
+            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:layout_marginTop="30dp" />
+
+
+        <include
+            android:id="@+id/ChemothropyHeader"
+            layout="@layout/pre_post_chemothorpy_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ChemothropyTitles" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RV_Chemothropy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ChemothropyHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+        <TextView
+            android:layout_marginStart="5dp"
+            android:background="@color/darkGray"
+            android:id="@+id/PostmedicationTitle"
+            app:layout_constraintTop_toBottomOf="@+id/RV_Chemothropy"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Postmedication"
+            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:layout_marginTop="30dp" />
+
+        <LinearLayout
+            android:id="@+id/PostmedicationLayout1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/PostmedicationTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtPostmedications"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="6"
+                android:padding="10dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/textview_shape" />
+
+            <Spinner
+                android:id="@+id/PostmedicationsStatus_SP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/PostmedicationsStatus"
+                android:layout_marginTop="20dp"
+                style="@style/spinner_style"
+                android:layout_marginHorizontal="7dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/PostmedicationsLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/PostmedicationLayout1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/pre_post_chemothorpy_header" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/PostmedicationRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/premedications_follows_layout"
+            android:layout_marginTop="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/PostmedicationsLayout2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Patient Complain"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/PatientComplain_SP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="3"
+                    style="@style/spinner_style"
+                    android:entries="@array/PatientComplain" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Note"
+                    android:textStyle="bold"
+                    android:layout_weight="1" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="3"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_marginHorizontal="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txt_Note"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="Notes..."
+
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/premedications_follows_layout"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/colorAccent"
+                app:icon="@drawable/save"
+                app:iconTint="@color/white"
+                app:iconGravity="end"
+
+                android:layout_marginVertical="10dp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

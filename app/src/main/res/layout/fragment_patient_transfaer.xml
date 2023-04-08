@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.PatientTransfer"
+    android:background="@color/backgroundcolor"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="10dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorPending"
+            android:paddingHorizontal="5dp"
+            android:text="محول من :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="تاريخ الدخول"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_secondary_variant" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="رقم الدخول"
+                    android:gravity="center"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/design_default_color_secondary_variant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+
+                <TextView
+                    android:id="@+id/txt_patientInDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/txt_patientIn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="القسم الداخلى"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_secondary_variant" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="وقت الدخول"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_secondary_variant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <TextView
+                    android:id="@+id/txt_patientInDep"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape" />
+
+                <TextView
+                    android:id="@+id/txt_patientInTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape"
+                    android:gravity="center" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="طبيب الدخول"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/design_default_color_secondary_variant" />
+
+            <TextView
+                android:id="@+id/txt_patientDoctor"
+                android:layout_marginVertical="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginVertical="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+
+            <!--           <Spinner-->
+            <!--                android:id="@+id/sp_outdep"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_marginHorizontal="2dp"-->
+            <!--                style="@style/spinner_style"-->
+            <!--                android:gravity="center" />-->
+
+
+            <TextView
+                android:id="@+id/txt_patientOUTDep"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/textview_shape"
+                android:layout_marginHorizontal="2dp"
+                android:gravity="center" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="قسم الخروج"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:textColor="@color/design_default_color_secondary_variant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/txt_patientOutDoctor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:hint="قم بكتابة ثلاث حروف" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="طبيب الخروج"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:textColor="@color/design_default_color_secondary_variant" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginVertical="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginVertical="5dp"
+            android:background="@color/colorPending"
+            android:paddingHorizontal="5dp"
+            android:text="محول إلى :"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="وقت التحويل"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_secondary_variant" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="تاريخ التحويل"
+                    android:textStyle="bold"
+                    android:textColor="@color/design_default_color_secondary_variant"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp">
+
+                <ImageButton
+                    android:id="@+id/btn_time_picker"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15"
+                    android:src="@drawable/ic_time_pick"
+                    android:layout_gravity="center"
+                    android:background="@color/design_default_color_secondary_variant" />
+
+                <TextView
+                    android:id="@+id/txt_Trans_Time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape" />
+
+                <ImageButton
+                    android:id="@+id/btn_pick_date"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".15"
+                    android:src="@drawable/ic_date_picker"
+                    android:layout_gravity="center"
+                    android:background="@color/design_default_color_secondary_variant" />
+
+                <TextView
+                    android:id="@+id/txt_Trans_Date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    android:background="@drawable/textview_shape"
+                    android:gravity="center" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_marginVertical="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+
+            <Spinner
+                android:id="@+id/sp_dep"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                style="@style/spinner_style"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="القسم"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:textColor="@color/design_default_color_secondary_variant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/txt_Doc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:hint="قم بكتابة ثلاث حروف"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="الطبيب المعالج"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:textColor="@color/design_default_color_secondary_variant" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp">
+
+
+            <AutoCompleteTextView
+                android:id="@+id/txt_ConDoctor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
+                android:hint="قم بكتابة ثلاث حروف"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="الطبيب الاستشاري"
+                android:gravity="center"
+                android:textStyle="bold"
+
+                android:textColor="@color/design_default_color_secondary_variant" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تحويل"
+            android:layout_marginVertical="10dp"
+            android:layout_gravity="center"
+            app:icon="@drawable/patient_trans_ic"
+            android:id="@+id/btn_transfer"
+            android:backgroundTint="@color/design_default_color_secondary_variant" />
+
+
+    </LinearLayout>
+
+</ScrollView>

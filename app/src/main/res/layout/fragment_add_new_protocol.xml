@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AddNewProtocol"
+    android:background="@color/backgroundcolor"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Protocol Patient Center"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Height (cm)"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Weight (kg)"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BSA (m2)"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_marginHorizontal="3dp"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ET_Height"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center"
+                android:inputType="number" />
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ET_Weight"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="number"
+                android:background="@drawable/edit_text_background" />
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_marginHorizontal="3dp"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ET_BSA"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:inputType="number"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/edit_text_background" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/card_view_style"
+            android:layout_marginVertical="10dp"
+            app:cardBackgroundColor="@color/cell_background_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lab Result"
+                    android:layout_marginStart="7dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/Lab_Result_RV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="horizontal" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Reason"
+                android:gravity="center" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Protocol"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Indication"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--            <com.google.android.material.textfield.TextInputLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:layout_marginHorizontal="3dp"-->
+            <!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
+            <!--            </com.google.android.material.textfield.TextInputLayout>-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ET_Reason"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginHorizontal="3dp"
+                android:background="@drawable/edit_text_background" />
+
+
+            <Spinner
+                android:id="@+id/Protocol_SP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                style="@style/spinner_style"
+                />
+
+            <Spinner
+                android:id="@+id/Indication_SP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                style="@style/spinner_style"
+                android:layout_marginHorizontal="3dp" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/card_view_style"
+            app:cardBackgroundColor="@color/cell_background_color"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Premedication"
+                    android:layout_marginStart="7dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginHorizontal="15dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pre_ED"
+                        android:padding="15dp"
+                        android:minHeight="130dp"
+                        android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/header_new_protocol" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RV_Pre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_new_pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Drug"
+                android:textAllCaps="false"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/fab_add"
+                app:iconGravity="start"
+                android:layout_gravity="center" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/card_view_style"
+            app:cardBackgroundColor="@color/cell_background_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chemothropy"
+                    android:layout_marginStart="7dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <include layout="@layout/header_new_protocol" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RV_Chemo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_new_chemo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Drug"
+                android:textAllCaps="false"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/fab_add"
+                app:iconGravity="start"
+                android:layout_gravity="center" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/card_view_style"
+            android:layout_marginVertical="10dp"
+            app:cardBackgroundColor="@color/cell_background_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Postmedications"
+                    android:layout_marginStart="7dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/post_ED"
+                    android:padding="15dp"
+                    android:minHeight="130dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/header_new_protocol" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RV_Post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_add_new_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Drug"
+                android:textAllCaps="false"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/fab_add"
+                app:iconGravity="start"
+                android:layout_gravity="center" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cycle"
+                    android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Day"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="The Regimen is repeated every"
+                android:gravity="center" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <Spinner
+                android:id="@+id/Cycle_SP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/spinner_style"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="3dp" />
+
+            <Spinner
+                android:id="@+id/Day_SP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/spinner_style" />
+
+            <Spinner
+                android:id="@+id/Repeat_SP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                style="@style/spinner_style"
+                android:layout_marginHorizontal="3dp"
+                android:entries="@array/protocol_weeks" />
+        </LinearLayout>
+        </LinearLayout>
+
+        <!--        <com.google.android.material.button.MaterialButton-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Schedule Protocol"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            app:icon="@drawable/schedule"-->
+        <!--            android:layout_marginStart="5dp" />-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textAllCaps="false"
+            app:cornerRadius="8dp"
+            app:icon="@drawable/save"
+            app:iconGravity="start"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+
+</ScrollView>

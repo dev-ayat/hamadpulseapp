@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:background="@color/backgroundcolor"
+    android:orientation="vertical"
+    tools:context=".fragment.Image_View_Fragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:background="@color/design_default_color_secondary_variant"
+        android:paddingVertical="10dp">
+
+        <ImageButton
+            android:id="@+id/close_d_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/_close_24"
+            android:layout_gravity="start"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+        <ImageButton
+            android:id="@+id/reset_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fullscreen"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/zoomIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zoom_in"
+            android:layout_marginHorizontal="15dp"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/zoomOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zoom_out"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/rotateR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rotate_right"
+            android:layout_marginHorizontal="15dp"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:id="@+id/rotateL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rotate_left"
+            android:background="@android:color/transparent"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      >
+        <com.ortiz.touchview.TouchImageView
+            android:id="@+id/img_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textview_shape"
+            />
+
+</LinearLayout>
+
+
+
+</LinearLayout>

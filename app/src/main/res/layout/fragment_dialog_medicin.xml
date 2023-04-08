@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:tag="AddTreatmentPlan_tag"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="#FFF"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="نوع الصيدلية : "
+            android:textSize="20sp"
+
+            />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:padding="5dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_marginVertical="10dp">
+            <RadioButton
+                android:id="@+id/fav_rbtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="المفضلة"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginHorizontal="5dp" />
+
+            <RadioButton
+                android:id="@+id/water_phram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="صيدلية المحاليل"
+                android:paddingHorizontal="5dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+            <RadioButton
+                android:id="@+id/drug_phram"
+                android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="صيدلية الأدوية المخدرة"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                    android:layout_marginHorizontal="5dp" />
+
+
+            <RadioButton
+                android:id="@+id/internal_phram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="صيدلية داخلية"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginEnd="5dp" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_marginBottom="10dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/auto_drugname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:imeOptions="actionDone"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="أدخل ثلاثة حروف للبحث عن اسم العلاج" />
+
+                <ImageView
+                    android:id="@+id/img_MedSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="4"
+                    android:src="@drawable/searchicon"
+                    app:srcCompat="@drawable/searchicon" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/DosageSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    style="@style/spinner_style"
+                    android:layout_marginBottom="10dp"
+                    android:overlapAnchor="false" />
+
+                <Spinner
+                    android:id="@+id/RouteSpinner"
+                    style="@style/spinner_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:overlapAnchor="false" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/interval_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="الجرعة">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txti_interval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:digits="0123456789."
+                        android:imeOptions="actionDone"
+                        android:singleLine="true"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Totalamount_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="الكمية المطلوبة">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txti_TotalAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="الملاحظات">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txti_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="4" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="تأكيد"
+                        android:id="@+id/btnMedicinConfirm"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="إلغاء الأمر"
+                        android:id="@+id/btnMedicinCancel"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+</ScrollView>

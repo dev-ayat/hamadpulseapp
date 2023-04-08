@@ -1,0 +1,87 @@
+<resources>
+    <string name="app_name">Pulse</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_noti">Notifications</string>
+    <string name="action_dept">الأقسام الطبية</string>
+    <string name="nurse_dept">الأقسام التمريضية</string>
+    <string name="action_about">about</string>
+    <string name="onboardingd">يمكنك تصفح بيانات المرضى و مشاهدة السجل الطبي للمريض بالكامل.</string>
+    <string name="update">تحديث</string>
+    <string name="site_url">www.sehatty.ps</string>
+    <string name="store_link">https://play.google.com/store/apps/details?id=com.moh.hamadpulse</string>
+    <string name="success_copy">تم النسخ الى الحافظة</string>
+    <string name="No_MED_EX">لم يتم تنفيذ جرعات العلاج بعد</string>
+
+
+    <string-array name="Statstic_name">
+        <item>اختر الإحصائية</item>
+        <item>إحصائية العيادات</item>
+        <item>إحصائية الطوارئ</item>
+        <item>إحصائية الحوادث</item>
+        <item>إحصائية الأقسام الداخلية</item>
+        <item>إحصائية العمليات</item>
+    </string-array>
+
+    <string-array name="hos_name">
+        <item>اختر اسم المستشفى</item>
+        <item>مجمع الشفاء الطبي</item>
+        <item>مستشفى د.عبد العزيز الرنتيسي </item>
+        <item>مستشفى النصر للأطفال</item>
+        <item>مستشفى الشهيد محمد الدرة</item>
+        <item>مجمع ناصر الطبي</item>
+        <item>مستشفى العيون</item>
+        <item>مستشفى شهداء الاقصى</item>
+        <item>مستشفى الهلال الاماراتي</item>
+        <item>مستشفى كمال عدوان</item>
+        <item>مستشفى غزة الاوروبي</item>
+        <item>مستشفى بيت حانون</item>
+        <item>مستشفى الصحة النفسية</item>
+        <item>مستشفى الحرازين</item>
+        <item>مستشفى الأندونيسي</item>
+        <item>مستشفى الأورام</item>
+    </string-array>
+
+    <string name="sort_ascending">Sort Ascending</string>
+    <string name="sort_descending">Sort Descending</string>
+    <string name="hiding_row_sample">Hiding 3. Row Sample</string>
+    <string name="showing_row_sample">Showing 3. Row Sample</string>
+    <string name="scroll_to_column_position">Scroll to 15. column position</string>
+    <string name="scroll_to_row_position">Scroll to 5. row position</string>
+    <string name="show_hide_the_column">Showing / Hiding 1. column</string>
+    <string name="table_pagination_details">Page %s, showing items %s - %s.</string>
+
+    <string-array name="moods">
+        <item />
+        <item>Happy</item>
+        <item>Sad</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item />
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="items_per_page">
+        <item>10</item>
+        <item>20</item>
+        <item>25</item>
+        <item>50</item>
+        <item>All</item>
+    </string-array>
+
+    <string name="json_error">Api Error</string>
+    <string name="title_activity_summary">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="o2mode">O2 Mode</string>
+
+</resources>

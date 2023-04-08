@@ -1,0 +1,87 @@
+<LinearLayout android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/card_view_style"
+        app:cardBackgroundColor="@color/backgroundcolor">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Drug"
+                android:gravity="center"
+                android:layout_weight="1.4"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dosing"
+                android:gravity="center"
+                android:layout_weight=".7"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Dose MOD.(%)	"
+                android:layout_weight="1"
+                android:textColor="@color/colorAccent"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Final Dose"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Route"
+                android:gravity="center"
+                android:layout_weight=".7"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Frequency"
+                android:gravity="center"
+                android:layout_weight=".7"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:paddingStart="3dp"
+                android:paddingLeft="3dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Special Instructions"
+                android:layout_weight="1.3"
+                android:textColor="@color/colorAccent" />
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Action"
+                android:layout_weight="1.2"
+                android:layout_margin="3dp"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</LinearLayout>

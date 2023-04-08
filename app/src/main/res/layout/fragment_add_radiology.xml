@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:tag="addRadiologyOrderFragment_tag"
+    android:clickable="true"
+    android:id="@+id/frag1"
+    tools:context=".fragment.AddRadiologyOrderFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Spinner
+            android:id="@+id/photoTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:overlapAnchor="false"
+            style="@style/spinner_style" />
+
+            <Spinner
+                android:id="@+id/organMasterSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:overlapAnchor="false"
+                style="@style/spinner_style"
+                android:padding="10dp" />
+
+            <Spinner
+                android:id="@+id/organDetailsSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:overlapAnchor="false"
+                style="@style/spinner_style" />
+
+            <Spinner
+                android:id="@+id/organPositionSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:overlapAnchor="false"
+                style="@style/spinner_style" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/viewBg"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="الملاحظات"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txti_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="4" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_add_rad"-->
+<!--            android:layout_width="250dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:background="@drawable/action_button"-->
+<!--            android:text="إضافة" />-->
+
+
+    </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_rad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_add"
+        app:backgroundTint="@color/colorAccent"
+        app:tint="@color/colorIcons" />
+</FrameLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/card_view_style"
+    android:id="@+id/lab_order_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_lab_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CBC"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:paddingStart="5dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/txt_first_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="WBC"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp" />
+
+            <TextView
+                android:id="@+id/txt_second_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="GRAN"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp" />
+
+            <TextView
+                android:id="@+id/txt_third_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="PLT"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp" />
+
+            <TextView
+                android:id="@+id/txt_fourth_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="HGB"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/txt_first"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="WBC"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/textview_shape" />
+
+            <TextView
+                android:id="@+id/txt_second"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="GRAN"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/textview_shape" />
+
+            <TextView
+                android:id="@+id/txt_third"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="PLT"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/textview_shape" />
+
+            <TextView
+                android:id="@+id/txt_fourth"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="HGB"
+                android:gravity="center"
+                android:layout_marginHorizontal="2dp"
+                android:background="@drawable/textview_shape" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+            <LinearLayout style="@style/container_btn_tests">
+                <Button
+                    android:id="@+id/btn_lab"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:text="المختبر"/>
+
+                <Button
+                    android:id="@+id/btn_rad"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_purple"
+                    android:text="الأشعة"/>
+
+                <Button
+                    android:id="@+id/btn_pharm"
+                    style="@style/btn_tests"
+                    android:text="الصيدلية"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_vital"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_blue_light"
+                    android:text="V-sighn N-notes"/>
+
+                <Button
+                    android:id="@+id/btn_ventailor"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:text="التنفس الصناعي" />
+
+                <Button
+                    android:id="@+id/btn_docnotes"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_dark_screen1"
+                    android:text="الملاحظات الطبية"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_archive"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_light_screen1"
+                    android:text="الأرشيف الطبي" />
+
+                <Button
+                    android:id="@+id/btn_pathology"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_dark_screen3"
+                    android:text="الباثولوجي"/>
+
+                <Button
+                    android:id="@+id/btn_discharge"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/yello"
+                    android:text="التخريج"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_daily_progrees"
+                    style="@style/btn_tests"
+                    android:text="daily progrees" />
+
+                <Button
+                    android:id="@+id/btnSummary"
+                    style="@style/btn_tests"
+                    android:backgroundTint="#512DA8"
+                    android:text="Summary"/>
+
+                <Button
+                    android:id="@+id/btnCoronaHistory"
+                    style="@style/btn_tests"
+                    android:backgroundTint="#E64A19"
+                    android:text="المسحات"/>
+
+            </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

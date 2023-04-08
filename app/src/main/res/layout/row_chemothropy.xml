@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/card_view_style">
+
+    <LinearLayout
+        android:paddingStart="2dp"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txti_Drug"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Drug"
+            android:layout_weight="1.4" />
+
+        <TextView
+            android:id="@+id/txti_Dosing"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dosing"
+            android:layout_weight=".7" />
+
+        <TextView
+            android:id="@+id/txti_DoseMOD"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Dose MOD.(%)"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/txti_FinalDose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Final Dose"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txti_Route"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Route"
+            android:layout_weight=".7"
+            android:gravity="center"
+
+            />
+
+        <TextView
+            android:id="@+id/txti_Frequency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:gravity="center" />_content"
+        android:text="Fr
+
+        <TextView
+            android:id="@+id/txti_SpecialInstructions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.3"
+            android:scrollbars="vertical"
+            android:textColor="@color/colorAccent"
+            android:text="Show Instructions"
+            android:gravity="center" />
+
+        <Spinner
+            android:id="@+id/PremedicationsAction_SP"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
+            android:layout_margin="3dp"
+            style="@style/spinner_style"
+            android:entries="@array/PremedicationsAction" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

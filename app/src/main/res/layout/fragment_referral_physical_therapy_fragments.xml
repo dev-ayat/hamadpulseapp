@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ReferralPhysicalTherapyFragment"
+    android:background="@color/backgroundcolor"
+    android:clickable="true">
+
+    <TextView
+        android:id="@+id/f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dear Colleague"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp" />
+
+    <EditText
+        android:id="@+id/dearcolleague_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/f"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/f"
+        app:layout_constraintBottom_toBottomOf="@+id/f"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/edit_text_background" />
+
+    <TextView
+        android:id="@+id/s"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Diagnosis"
+        app:layout_constraintTop_toBottomOf="@+id/f"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/f" />
+
+    <EditText
+        android:id="@+id/Diagnosis_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/s"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/s"
+        app:layout_constraintBottom_toBottomOf="@+id/s"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/edit_text_background" />
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Precautions"
+        app:layout_constraintTop_toBottomOf="@+id/s"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/s" />
+
+    <EditText
+        android:id="@+id/Precautions_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/t"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/t"
+        app:layout_constraintBottom_toBottomOf="@+id/t"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/edit_text_background" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="submit"
+        app:layout_constraintTop_toBottomOf="@+id/t"
+        app:layout_constraintStart_toStartOf="@+id/Precautions_et"
+        app:layout_constraintEnd_toEndOf="@+id/Precautions_et"
+        android:layout_marginTop="30dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:tag="cards main container">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/card_view_style">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/viewBg"
+                android:orientation="horizontal"
+                android:weightSum="11">
+
+                <TextView
+                    android:id="@+id/txtdocname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1.5"
+                    android:text="Doc Name"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    />
+
+                <TextView
+                    android:id="@+id/txtOrderrecivedate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1.5"
+                    android:text="Date"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    />
+
+
+                <TextView
+                    android:id="@+id/txtbloodgroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1.5"
+                    android:text="BloodG"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                     />
+
+                <TextView
+                    android:id="@+id/txtunitType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Unit Type"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                     />
+
+                <TextView
+                    android:id="@+id/txtunitNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Unit No"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                     />
+
+
+                <TextView
+                    android:id="@+id/txtrevicername"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Note"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                     />
+
+
+                <ImageButton
+                    android:layout_gravity="center"
+                    android:id="@+id/card_arrow"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="expandable_card_view_image_content_description"
+                    android:src="@drawable/open_file"
+                    tools:ignore="RtlCompat"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:id="@+id/Ex_protocol"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:contentDescription="expandable_card_view_image_content_description"
+                    android:src="@drawable/administration"
+                    tools:ignore="RtlCompat"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</LinearLayout>

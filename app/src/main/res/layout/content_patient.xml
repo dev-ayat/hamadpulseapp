@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityPatient"
+    android:orientation="vertical">
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical">-->
+    <!--        <com.wang.avi.AVLoadingIndicatorView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            app:indicatorName="BallPulseIndicator"-->
+    <!--            android:id="@+id/imgLoading"-->
+    <!--            android:visibility="gone"-->
+    <!--            app:indicatorColor="@color/colorPrimary" />-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:layout_margin="10dp">-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="5dp"-->
+    <!--            android:orientation="horizontal">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/txtPatientName"-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:gravity="center"-->
+    <!--                android:textAppearance="?android:attr/textAppearanceLarge" />-->
+
+
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="horizontal">-->
+
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="vertical"-->
+    <!--                android:gravity="center">-->
+    <!--                <ImageView-->
+    <!--                    android:layout_width="96dp"-->
+    <!--                    android:layout_height="96dp"-->
+    <!--                    android:src="@drawable/patient"/>-->
+
+    <!--                &lt;!&ndash;            <TextView&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:id="@+id/lblpatName"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:layout_gravity="right"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:text="المريض"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:textAppearance="?android:attr/textAppearanceMedium"&ndash;&gt;-->
+    <!--                &lt;!&ndash;                android:textColor="@color/colorAccent" />&ndash;&gt;-->
+    <!--            </LinearLayout>-->
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="0dp"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:orientation="vertical">-->
+
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal">-->
+
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/txtPatientID"-->
+    <!--                        android:layout_width="0dp"-->
+    <!--                        android:layout_marginLeft="5dp"-->
+    <!--                        android:layout_marginRight="5dp"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:gravity="right"-->
+    <!--                        android:layout_weight="1"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"/>-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/lblpatid"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+
+    <!--                        android:text="الرقم الطبي:"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--                        android:textColor="@color/colorAccent" />-->
+
+
+    <!--                </LinearLayout>-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content">-->
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/txtPatientAdmDate"-->
+    <!--                        android:layout_width="0dp"-->
+    <!--                        android:gravity="right"-->
+    <!--                        android:layout_marginLeft="5dp"-->
+    <!--                        android:layout_marginRight="5dp"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_weight="1"-->
+    <!--                        android:text="" />-->
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/lbladmdate"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="تاريخ الدخول:"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--                        android:textColor="@color/colorAccent" />-->
+
+    <!--                </LinearLayout>-->
+
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/txtDayCount"-->
+    <!--                        android:layout_width="0dp"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_weight="1"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--                        android:gravity="right"-->
+    <!--                        android:layout_marginLeft="5dp"-->
+    <!--                        android:layout_marginRight="5dp"-->
+    <!--                        android:text="" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/lbldaycount"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text=" عدد أيام المكوث:"-->
+    <!--                        android:textAppearance="?android:attr/textAppearanceMedium"-->
+    <!--                        android:textColor="@color/colorAccent" />-->
+
+
+    <!--                </LinearLayout>-->
+
+    <!--            </LinearLayout>-->
+
+    <!--        </LinearLayout>-->
+    <!--    </LinearLayout>-->
+
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="2dp"-->
+    <!--        android:background="@color/lightgray" />-->
+    <!--    <FrameLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:id="@+id/framePatient">-->
+    <!--        <androidx.recyclerview.widget.RecyclerView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/rvPatientServices"/>-->
+    <!--&lt;!&ndash;        <include layout="@layout/content_buttons"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_margin="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;            android:layout_width="match_parent"/>&ndash;&gt;-->
+    <!--    </FrameLayout>-->
+
+</LinearLayout>

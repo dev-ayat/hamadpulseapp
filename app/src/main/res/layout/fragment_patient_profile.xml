@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:padding="10dp"
+    android:tag="patient_profile_tag"
+    android:layoutDirection="rtl"
+    tools:context=".fragment.PatientProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txtscnane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="ملف المريض"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <TextView
+                    android:id="@+id/lblpatName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="2"
+                    android:text="اسم المريض:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txtpatName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="4"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <TextView
+                    android:id="@+id/lblpatid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="2"
+                    android:text="الرقم الطبي:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txtpatid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="12">
+
+                <TextView
+                    android:id="@+id/lbladmdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="3"
+                    android:text="تاريخ الدخول:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txtadmdate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/lbldaycount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="4"
+                    android:text=" عدد أيام المكوث:"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorAccent" />
+
+                <TextView
+                    android:id="@+id/txtdaycount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/lightgray" />
+
+            <LinearLayout style="@style/container_btn_tests">
+                <Button
+                    android:id="@+id/btn_lab"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:text="المختبر"/>
+
+                <Button
+                    android:id="@+id/btn_rad"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_purple"
+                    android:text="الأشعة"/>
+
+                <Button
+                    android:id="@+id/btn_pharm"
+                    style="@style/btn_tests"
+                    android:text="الصيدلية"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_vital"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/holo_blue_light"
+                    android:text="العلامات الحيوية"/>
+
+                <Button
+                    android:id="@+id/btn_ventailor"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:text="التنفس الصناعي"/>
+
+                <Button
+                    android:id="@+id/btn_docnotes"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_dark_screen1"
+                    android:text="الملاحظات الطبية"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_archive"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_light_screen1"
+                    android:text="الأرشيف الطبي" />
+
+                <Button
+                    android:id="@+id/btn_pathology"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_dark_screen3"
+                    android:text="الباثولوجي"/>
+
+                <Button
+                    android:id="@+id/btn_discharge"
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/yello"
+                    android:text="التخريج"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_btn_tests">
+
+                <Button
+                    android:id="@+id/btn_daily_progrees"
+                    style="@style/btn_tests"
+                    android:text="daily progrees" />
+
+                <Button
+                    style="@style/btn_tests"
+                    android:backgroundTint="@color/dot_dark_screen3"
+                    android:text="الباثولوجي"
+                    android:visibility="invisible"/>
+
+                <Button
+                    style="@style/btn_tests"
+                    android:text="التخريج"
+                    android:backgroundTint="@color/yello"
+                    android:visibility="invisible"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
