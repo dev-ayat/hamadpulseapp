@@ -38,17 +38,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.adapters.ExpandableListAdapter;
 import com.moh.hamadpulse.constants.CustomRequest;
 import com.moh.hamadpulse.dialog.DialogLoding;
 import com.moh.hamadpulse.dialog.DialogMsg;
-import com.moh.hamadpulse.fragment.DepartmentsFragment;
 import com.moh.hamadpulse.fragment.Fragment_View_All_Requests;
 import com.moh.hamadpulse.fragment.HomeFragment;
 import com.moh.hamadpulse.fragment.NursingDeptFragment;
@@ -229,27 +225,27 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
 //        Log.e("serial",Device.getSerialNumber()+"");
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.e("token_err", "no token");
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-                        Log.e("token", token);
-                        Log.e("user_id", (Controller.pref.getString("USER_ID", "")));
-                        Controller.editor.putString("FCM_TOKEN", token);
-//                        String user_Id= Controller.editor.putString("FCM_TOKEN", token);
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(new OnCompleteListener<String>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<String> task) {
+//                        if (!task.isSuccessful()) {
+//                            Log.e("token_err", "no token");
+//                            return;
+//                        }
 //
-                        register_token(token);
-                        // Log and toast
-                        Log.e("token", token);
-                    }
-                });
+//                        // Get new FCM registration token
+//                        String token = task.getResult();
+//                        Log.e("token", token);
+//                        Log.e("user_id", (Controller.pref.getString("USER_ID", "")));
+//                        Controller.editor.putString("FCM_TOKEN", token);
+////                        String user_Id= Controller.editor.putString("FCM_TOKEN", token);
+////
+//                        register_token(token);
+//                        // Log and toast
+//                        Log.e("token", token);
+//                    }
+//                });
 
         setOrientation();
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -389,12 +385,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem item = menu.findItem(R.id.action_dept);
+//        MenuItem item = menu.findItem(R.id.action_dept);
         MenuItem nursedept = menu.findItem(R.id.nurse_dept);
         MenuItem infoversion = menu.findItem(R.id.action_info);
         MenuItem adminNurse = menu.findItem(R.id.admin_nurse_dept);
 
-        item.setVisible(false);
+//        item.setVisible(false);
         nursedept.setVisible(false);
         adminNurse.setVisible(false);
         infoversion.setVisible(true);
@@ -407,12 +403,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        Log.e("TEST",id +" "+R.id.action_dept+" "+R.id.nurse_dept);
-        if (id == R.id.action_dept) {
-            DepartmentsFragment departmentsFragment = new DepartmentsFragment();
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            departmentsFragment.show(ft, "tag");
-        }
+//        Log.e("TEST",id +" "+R.id.action_dept+" "+R.id.nurse_dept);
+//        if (id == R.id.action_dept) {
+//            DepartmentsFragment departmentsFragment = new DepartmentsFragment();
+//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            departmentsFragment.show(ft, "tag");
+//        }
 
         if (id == R.id.nurse_dept) {
             NursingDeptFragment nursingDeptFragment = new NursingDeptFragment();

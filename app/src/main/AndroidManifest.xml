@@ -72,6 +72,7 @@
         <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
         <!-- android:resource="@xml/picker_provider_paths" /> -->
         <!-- </provider> -->
+
         <activity android:name=".ChartActivity" />
         <activity android:name=".activiteis.boardingActivity" />
         <activity android:name=".activiteis.icd10Activity"

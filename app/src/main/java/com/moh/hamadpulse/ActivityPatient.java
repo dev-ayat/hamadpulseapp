@@ -1,7 +1,6 @@
 package com.moh.hamadpulse;
 
 import static com.moh.hamadpulse.constants.ConstShared.USER_TYPE;
-
 import static java.time.temporal.ChronoUnit.DAYS;
 
 import android.content.Intent;
@@ -36,11 +35,7 @@ import com.moh.hamadpulse.fragment.AddNewProtocol;
 import com.moh.hamadpulse.fragment.AddRadiologyOrderFragment;
 import com.moh.hamadpulse.fragment.AddTreatmentPlanFragment;
 import com.moh.hamadpulse.fragment.AddVentelationFragment;
-import com.moh.hamadpulse.fragment.AdmissionDashboradFragment;
-import com.moh.hamadpulse.fragment.AdmissionHistoryFragment;
 import com.moh.hamadpulse.fragment.AllargiesFragment;
-import com.moh.hamadpulse.fragment.ArchiveServicesFragment;
-import com.moh.hamadpulse.fragment.BloodTransferFragment;
 import com.moh.hamadpulse.fragment.DischargeFragment;
 import com.moh.hamadpulse.fragment.DoctorNurseNoteFragment;
 import com.moh.hamadpulse.fragment.EfilePhotoCopingFragment;
@@ -53,7 +48,6 @@ import com.moh.hamadpulse.fragment.ProtocolFragment;
 import com.moh.hamadpulse.fragment.RadFragment;
 import com.moh.hamadpulse.fragment.RadiologyFragment;
 import com.moh.hamadpulse.fragment.TreatmentPlanFragment;
-import com.moh.hamadpulse.fragment.VanteliationFragment;
 import com.moh.hamadpulse.fragment.View_Rad_Orders;
 import com.moh.hamadpulse.fragment.laborderFragment;
 import com.moh.hamadpulse.fragment.newAddVitalSignsFragment;
@@ -109,7 +103,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
         width = displayMetrics.widthPixels;
         setContentView(R.layout.activity_patient);
 
-        btn_allergies = findViewById(R.id.btn_allergies);
+     //   btn_allergies = findViewById(R.id.btn_allergies);
         btn_is_discharge = findViewById(R.id.btn_is_discharge);
         btn_is_discharge.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +124,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
             patient_day_count.setTooltipText("عدد أيام المكوث");
             patient_dig.setTooltipText("التشخيص");
             patient_dig.setTooltipText("المريض مرشح للخروج");
-            btn_allergies.setTooltipText("الحساسية");
+            //    btn_allergies.setTooltipText("الحساسية");
         }
 
 
@@ -175,10 +169,11 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
 
 
     }
-    public void get_new_p_serv(){
+    public void get_new_p_serv() {
 
         Map<String, String> map = new HashMap<>();
-        map.put("P_PATRIC_CD", "616549");
+        map.put("P_PATREC_CD", (getmCardviewDataModel().getPatid() + ""));
+
         map.put("P_ADM_CD", "412596");
         map.put("TRANS_SCREEN_CD_IN", "");
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
@@ -243,8 +238,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
                 mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiology", R.drawable.x_ray_c));
                 mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
 
-
-                //mListPatientServices.add(new PatientServices(new TreatmentPlanFragment(this), null, "الصيدلية"));
+                mListPatientServices.add(new PatientServices(new TreatmentPlanFragment(this), null, "الصيدلية"));
                 mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
                 mListPatientServices.add(new PatientServices(new newVitalSignsFragment(this), null, "Vital Signs", R.drawable.vital_sigins_vector));
 
@@ -252,35 +246,33 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
                     mListPatientServices.add(new PatientServices(new ProtocolFragment(), null, "Protocol", R.drawable.health));
             }else {
                 mListPatientServices.add(new PatientServices(new FragmentDailyProgressDashboard(this), null, "Daily Progress", R.drawable.schedule));
-                mListPatientServices.add(new PatientServices(new AdmissionDashboradFragment(), null, "Admission Request & \nPhysical Examination", R.drawable.ic_admandph));
+//                mListPatientServices.add(new PatientServices(new AdmissionDashboradFragment(), null, "Admission Request & \nPhysical Examination", R.drawable.ic_admandph));
                 mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiology", R.drawable.x_ray_c));
                 mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
 
-                //mListPatientServices.add(new PatientServices(new TreatmentPlanFragment(this), null, "الصيدلية"));
-                mListPatientServices.add(new PatientServices(new VanteliationFragment(this), null, "Ventilation", R.drawable.ventilator));
+//                mListPatientServices.add(new PatientServices(new VanteliationFragment(this), null, "Ventilation", R.drawable.ventilator));
                 mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
-                // mListPatientServices.add(new PatientServices(new newVitalSignsFragment(this), null, "V-sighn N-notes"));
-                mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
+///                mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
                 mListPatientServices.add(new PatientServices(new DoctorNurseNoteFragment(), null, "Doctor orders", R.drawable.prescription));
 
                 String pathologyurl = "http://apps.moh.gov.ps/pathology/path_sys/index.php/login/get";
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pathologyurl));
 
-                mListPatientServices.add(new PatientServices(new DischargeFragment(this), null, "Discharge", R.drawable.bed));
+//                mListPatientServices.add(new PatientServices(new DischargeFragment(this), null, "Discharge", R.drawable.bed));
                 String DEPT_SPEC_CODE = Controller.pref.getString("DEPT_SPEC_CODE", "");
-                mListPatientServices.add(new PatientServices(null, browserIntent, "Pathology", R.drawable.microscope));
+//                mListPatientServices.add(new PatientServices(null, browserIntent, "Pathology", R.drawable.microscope));
                 Log.e("DEPT_SPEC_CODE", "ayattttt" + DEPT_SPEC_CODE);
                 //  if (DEPT_SPEC_CODE.equals("22")) {
                 if (mCardviewDataModel.getHOS_NO().equals("2") || mCardviewDataModel.getHOS_NO().equals("18"))
                     mListPatientServices.add(new PatientServices(new ProtocolFragment(), null, "Protocol", R.drawable.health));
                 // mListPatientServices.add(new PatientServices(new ExaminationFragment(this), null, "Clinical examination", R.drawable.diagnosis));
                 mListPatientServices.add(new PatientServices(new NurseServicesFragment(), null, "Nursing procedures", R.drawable.nurses));
-                mListPatientServices.add(new PatientServices(new BloodTransferFragment(), null, "Blood Transfer", R.drawable.blood_transfusion));
+                //     mListPatientServices.add(new PatientServices(new BloodTransferFragment(), null, "Blood Transfer", R.drawable.blood_transfusion));
                 //   }
 
-                mListPatientServices.add(new PatientServices(new FragmentCoronaHistory(), null, "Corona Tests", R.drawable.bacteria));
-                mListPatientServices.add(new PatientServices(new AdmissionHistoryFragment(), null, "Admission History", R.drawable.history_test_icon));
-                mListPatientServices.add(new PatientServices(new ReferralsFragment(), null, "Referrals ", R.drawable.ic_exchange_green));
+                //    mListPatientServices.add(new PatientServices(new FragmentCoronaHistory(), null, "Corona Tests", R.drawable.bacteria));
+                //     mListPatientServices.add(new PatientServices(new AdmissionHistoryFragment(), null, "Admission History", R.drawable.history_test_icon));
+                //    mListPatientServices.add(new PatientServices(new ReferralsFragment(), null, "Referrals ", R.drawable.ic_exchange_green));
                 Intent i = new Intent(this, ActivitySummary.class);
                 i.putExtra(Extra.EXTRA_PATIENT_INFO, mCardviewDataModel);
             }
@@ -290,9 +282,9 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
             mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
             mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
             mListPatientServices.add(new PatientServices(new DoctorNurseNoteFragment(), null, "Doctor orders", R.drawable.prescription));
-            mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
+//            mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
             mListPatientServices.add(new PatientServices(new NurseServicesFragment(), null, "Nursing procedures", R.drawable.nurses));
-            mListPatientServices.add(new PatientServices(new FragmentCoronaHistory(), null, "Corona Tests", R.drawable.bacteria));
+//            mListPatientServices.add(new PatientServices(new FragmentCoronaHistory(), null, "Corona Tests", R.drawable.bacteria));
         }
         mAdapterPatientServices = new AdapterPatientServices(mListPatientServices, this::myclick,newPatientServicesModel);
 //        rvPatientServices.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -308,21 +300,21 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
         txtPatientName.setText(mCardviewDataModel.getPatname());
         txtPatientID.setText(mCardviewDataModel.getPatid() + "");
         txtPatientAdmDate.setText(mCardviewDataModel.getIndate());
-
-        btn_allergies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AllargiesFragment allargiesFragment = new AllargiesFragment();
-                CallFragment(allargiesFragment);
-
-            }
-        });
+//
+//        btn_allergies.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AllargiesFragment allargiesFragment = new AllargiesFragment();
+//                CallFragment(allargiesFragment);
+//
+//            }
+//        });
 //        MyDateTime mMyDateTime = ToolApp.getDiffDate(ToolApp.getDateNow(), ToolApp.convertFormatDate(mCardviewDataModel.getIndate(), new SimpleDateFormat("dd-MMM-yy", Locale.ENGLISH)));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            String start_day=mCardviewDataModel.getIndate().split(" ")[0].replace("/","-");
-            String end_day=LocalDate.now().format(formatter).toString();
+            String start_day = mCardviewDataModel.getIndate().split(" ")[0].replace("/", "-");
+            String end_day = LocalDate.now().format(formatter).toString();
 //            Log.d("my_date",start_day);
 //            Log.d("my_date",end_day);
 //            Log.d("my_date",DAYS.between(LocalDate.parse(start_day,formatter),
@@ -394,7 +386,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
             diagnoselayout.setVisibility(View.VISIBLE);
         }else
             diagnoselayout.setVisibility(View.GONE);
-        isPatietHaveAllergies();
+        //   isPatietHaveAllergies();
     }
 
     private void isPatietHaveAllergies() {

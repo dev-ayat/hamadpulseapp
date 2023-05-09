@@ -97,7 +97,7 @@ public class VersionInfoFragment extends Fragment {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        version.setText("الاصدار V " + version_str+"("+Controller.DATABASE_V+")");
+        version.setText("الإصدار V " + version_str + "(" + Controller.DATABASE_V + ")");
 
 
 

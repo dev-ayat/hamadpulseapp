@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -127,13 +125,13 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//
+//    }
 
     public void onResume() {
         super.onResume();
@@ -209,9 +207,8 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
             String URL = "";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("EmpID", (Controller.pref.getString("USER_ID", "")));
-            jsonBody.put("PatientID", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
-            //  jsonBody.put("PatientID", "913190500");
-
+            //   jsonBody.put("PatientID", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
+            jsonBody.put("PatientID", "802331306");
             jsonBody.put("Modality", "*");
             jsonBody.put("Count", count);
             jsonBody.put("ImageDate", "");

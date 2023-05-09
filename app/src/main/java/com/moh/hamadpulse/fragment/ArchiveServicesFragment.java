@@ -2,8 +2,6 @@ package com.moh.hamadpulse.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -67,13 +65,13 @@ public class ArchiveServicesFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//
+//    }
 
     public void onResume() {
         super.onResume();

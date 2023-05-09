@@ -58,6 +58,12 @@
                 android:overlapAnchor="false"
                 style="@style/spinner_style" />
 
+            <!--            <com.moh.hamadpulse.MultiSpinner-->
+            <!--                android:id="@+id/multispinner"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:entries="@array/multispinner_entries" />-->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

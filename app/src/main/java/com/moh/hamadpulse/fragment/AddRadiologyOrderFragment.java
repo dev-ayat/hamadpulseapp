@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import com.moh.hamadpulse.ActivityPatient;
 import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.InterfacePatient;
+import com.moh.hamadpulse.MultiSpinner;
 import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.adapters.RadiologyDetailsOrganAdapter;
 import com.moh.hamadpulse.adapters.RadiologyMasterOrganAdapter;
@@ -64,6 +65,7 @@ public class AddRadiologyOrderFragment extends DialogFragment {
     RadiologyMasterOrganAdapter radiologyMasterOrganAdapter;
     RadiologyDetailsOrganAdapter radiologyDetailsOrganAdapter;
     RadiologyPositionAdapter radiologyPositionAdapter;
+    MultiSpinner multiSpinner;
     public String fragment_cd = "5";
 
 
@@ -94,6 +96,7 @@ public class AddRadiologyOrderFragment extends DialogFragment {
         organMasterSpinner = view.findViewById(R.id.organMasterSpinner);
         organDetailsSpinner = view.findViewById(R.id.organDetailsSpinner);
         organPositionSpinner = view.findViewById(R.id.organPositionSpinner);
+        //multiSpinner = view.findViewById(R.id.multispinner);
         txti_notes = view.findViewById(R.id.txti_notes);
         user_id = Controller.pref.getString("USER_ID", "");
         doctor_spc = Controller.pref.getString("Doctor_spc", "");
@@ -156,6 +159,19 @@ public class AddRadiologyOrderFragment extends DialogFragment {
             }
         });
 
+
+       /* multiSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                radpositionCD = ((GetRadPositionConst) organPositionSpinner.getSelectedItem()).getCRADPOSITIONCODE();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
         btn_add_rad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

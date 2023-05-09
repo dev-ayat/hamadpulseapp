@@ -3,8 +3,6 @@ package com.moh.hamadpulse.fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -168,13 +166,13 @@ public class Lbres_Fragment extends Fragment implements LaborderCardviewAdapter.
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//
+//    }
 
     public void onResume() {
         super.onResume();
@@ -184,7 +182,7 @@ public class Lbres_Fragment extends Fragment implements LaborderCardviewAdapter.
     }
 
     FragmentLabResult mfragmentLabResult;
-    ArrayList<Object>   mListObject;
+    ArrayList<Object> mListObject;
     @Override
     public void onLabClick(Object object, int pos) {
 //        Toast.makeText(getContext(), pos + "", Toast.LENGTH_LONG).show();

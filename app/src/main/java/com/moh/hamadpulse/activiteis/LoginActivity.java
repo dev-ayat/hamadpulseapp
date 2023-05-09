@@ -33,6 +33,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.android.volley.VolleyError;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.MyRequest;
@@ -67,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     //private LoadingDialog loader_dialog;
     ArrayList<HashMap<String, String>> USER_LOCATION = new ArrayList<HashMap<String, String>>();
     ArrayList<HashMap<String, String>> USER_SCREEN = new ArrayList<HashMap<String, String>>();
-    EditText username, password;
+    TextInputLayout username, password;
     CheckBox svpasschBox;
     Animation animation, animation2;
     TextView result;
@@ -122,8 +123,8 @@ public class LoginActivity extends AppCompatActivity {
         Controller.editor.putString("SAVE_LOGIN", "0");
         if (Controller.pref.getString("SAVE_LOGIN", "0").equals("0")) {
             Log.e("save", Controller.pref.getString("SAVE_LOGIN", "0"));
-            username.setText(Controller.pref.getString("username", ""));
-            password.setText(Controller.pref.getString("password", ""));
+            username.getEditText().setText(Controller.pref.getString("username", ""));
+            password.getEditText().setText(Controller.pref.getString("password", ""));
             txtvar.setText(Controller.pref.getString("foldername", ""));
             svpasschBox.setChecked(true);
         }
@@ -146,85 +147,17 @@ public class LoginActivity extends AppCompatActivity {
 //         host_name = addr.getHostName();
 //        Controller.editor.putString("host_name",host_name);
 
-  //410186266
-        // أوروبي
-//           username.setText("939892279");
-//            username.setText("901689760");
-        //password.setText("123456");
-        //     username.setText("920617917");
-        //     password.setText("6wU02i");
-//        locale
+
 // اسامة ابو جبل
-//        username.setText("993517325");
-//        password.setText("XXX60s");
-////
-            username.setText("ADMIN");
-          password.setText("123456");
-//  nurse
-//        username.setText("912277142");
-//        password.setText("8GC55i");
-        // Shifaa
-//        username.setText("993517325");
-//       password.setText("993517325");
+        // username.setText("993517325");
+        //  password.setText("XXX60s");
 
-//        username.setText("801033259");
-//        password.setText("a223607");
-
-        // aqsa
-//          username.setText("925057085");
-//           password.setText("e123123");
-
-        // Turkish
-
-        /// doctor
-//        username.setText("902730860");
-//        password.setText("0JE72m");
+        username.getEditText().setText("993517325");
+        password.getEditText().setText("XXX60s");
 // nurse
-//           username.setText("903484418");
-//          password.setText("q8R24m");
+        //  username.getEditText().setText("900550427");
+        // password.getEditText().setText("pYY57u");
 
-        ///doctor besan
-
-//           username.setText("803479609");
-//          password.setText("PsA53g");
-
-//pharmacist
-//         username.setText("949816888");
-//          password.setText("l8M72v");
-//        Toast.makeText(getApplicationContext(), isConnectedViaWifi()+"",
-//                Toast.LENGTH_LONG).show();
-
-        // nurse
-////
-
-//        username.setText("900754490");
-//        password.setText("FsQ92m");
-//
-
-        // RANTISI
-//           password.setText("JUN23i");
-//         username.setText("903280139");
-
-        // RANTISI
-        //      password.setText("a123123");
-        //      username.setText("923916944");
-        // andonisi
-//          username.setText("804314276");
-//         password.setText("N2H84s");
-//     naser
-//        username.setText("924927122");
-//        password.setText("a123456");
-
-//        doctor
-//          username.setText("924927122");
-//         password.setText("a123456");
-//        Mental
-//        username.setText("801269960");
-//        password.setText("kRE96d");
-
-//        Dora
-//        username.setText("900972589");
-//        password.setText("iz0599352908");
 //        ----------------------------------------------
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -448,8 +381,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void checkuserpass() {
 
-        user = username.getText().toString().trim();
-        pass = password.getText().toString().trim();
+        user = username.getEditText().getText().toString().trim();
+        pass = password.getEditText().getText().toString().trim();
         foldername = txtvar.getText().toString().trim();
 
         //    Log.e( "foldername: ",foldername);

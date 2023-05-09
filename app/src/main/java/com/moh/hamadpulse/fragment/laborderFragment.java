@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -108,9 +106,9 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
         setHasOptionsMenu(true);/// to disable icon from menu
         MyOutput = new ArrayList<>();
         btn_addlaborder = view.findViewById(R.id.btn_add_laborder);
-        btn_addcorona = view.findViewById(R.id.btn_add_corona);
+        //btn_addcorona = view.findViewById(R.id.btn_add_corona);
         btn_addlaborder.setOnClickListener(this);
-        btn_addcorona.setOnClickListener(this);
+        //   btn_addcorona.setOnClickListener(this);
 
 
         tabLayout = view.findViewById(R.id.tabs);
@@ -165,13 +163,13 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
 
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//
+//    }
 
     public void onResume() {
         super.onResume();
@@ -259,12 +257,12 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
             btn_addlaborder.setOnClickListener(null);
     }
 
-    public void enableBtnLabCovid(boolean b) {
-        if (b)
-            btn_addcorona.setOnClickListener(this);
-        else
-            btn_addcorona.setOnClickListener(null);
-    }
+//    public void enableBtnLabCovid(boolean b) {
+//        if (b)
+//            btn_addcorona.setOnClickListener(this);
+//        else
+//            btn_addcorona.setOnClickListener(null);
+//    }
 
 
     private void sendorderData() {
@@ -435,7 +433,7 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
         String frag_cd = "3";
 
         mInterfacePatient.showLoading(true);
-        enableBtnLabCovid(false);
+        // enableBtnLabCovid(false);
         Map<String, String> map = new HashMap<>();
         map.put("P_CREATED_BY", userid);
         map.put("P_PATIENT_ID", patmrp);
@@ -462,7 +460,7 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
                 }
 
                 mInterfacePatient.showLoading(false);
-                enableBtnLabCovid(true);
+                //  enableBtnLabCovid(true);
                 if (res > 0) {
                     Toast.makeText(getContext(), "تم إضافة الطلب بنجاح", Toast.LENGTH_SHORT).show();
                     getActivity().onBackPressed();
@@ -476,7 +474,7 @@ public class laborderFragment extends Fragment implements LaborderfavtestAdapter
             public void onErrorResponse(VolleyError error) {
                 Controller.view_error(error, getContext());
                 mInterfacePatient.showLoading(false);
-                enableBtnLabCovid(true);
+                //    enableBtnLabCovid(true);
             }
         });
         jsObjRequest.setRetryPolicy(new RetryPolicy() {

@@ -218,4 +218,13 @@
         <item>three weeks</item>
         <item>four weeks</item>
     </string-array>
+
+    <string-array name="multispinner_entries">
+        <item>select</item>
+        <item>one week</item>
+        <item>two weeks</item>
+        <item>three weeks</item>
+        <item>four weeks</item>
+    </string-array>
+
 </resources>

@@ -4,8 +4,6 @@ import static com.moh.hamadpulse.constants.ConstShared.USER_TYPE;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -45,12 +43,12 @@ public class LabFragment extends Fragment implements View.OnClickListener {
         lbordername = view.findViewById(R.id.lbordername);
         cvLabResult = view.findViewById(R.id.cvLabResult);
         cvLabRequest = view.findViewById(R.id.cvLabRequest);
-        cvCentralLab = view.findViewById(R.id.cvCentralLab);
+      //  cvCentralLab = view.findViewById(R.id.cvCentralLab);
         cvSampling = view.findViewById(R.id.cvSampling);
         lbordername.setOnClickListener(this);
         cvLabResult.setOnClickListener(this);
         cvLabRequest.setOnClickListener(this);
-        cvCentralLab.setOnClickListener(this);
+//        cvCentralLab.setOnClickListener(this);
         cvSampling.setOnClickListener(this);
 
     }
@@ -61,12 +59,12 @@ public class LabFragment extends Fragment implements View.OnClickListener {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//    }
 
     public void onResume() {
         super.onResume();
@@ -89,14 +87,14 @@ public class LabFragment extends Fragment implements View.OnClickListener {
                     ((ActivityPatient) getActivity()).CallFragment(new laborderFragment());
 
                 break;
-            case R.id.cvCentralLab:
-                ((ActivityPatient) getActivity()).CallFragment(new Fragment_View_Lab_Reports());
-                break;
+//            case R.id.cvCentralLab:
+//                ((ActivityPatient) getActivity()).CallFragment(new Fragment_View_Lab_Reports());
+//                break;
             case R.id.cvSampling:
                 if (Controller.pref.getString(USER_TYPE, "").equals("5"))
-                Toast.makeText(getContext(), "ليس من ضمن صلاحيات المستخدم", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "ليس من ضمن صلاحيات المستخدم", Toast.LENGTH_SHORT).show();
                 else
-                ((ActivityPatient) getActivity()).CallFragment(new ViewAllSampling());
+                    ((ActivityPatient) getActivity()).CallFragment(new ViewAllSampling());
 
         }
     }

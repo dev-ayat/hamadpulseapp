@@ -158,7 +158,7 @@ public class PatientFragment extends Fragment {//implements SearchView.OnQueryTe
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
+//        MenuItem item = menu.findItem(R.id.action_dept);
         MenuItem item2= menu.findItem(R.id.nurse_dept);
         MenuItem item3= menu.findItem(R.id.action_info);
         MenuItem item4= menu.findItem(R.id.admin_nurse_dept);
@@ -166,17 +166,17 @@ public class PatientFragment extends Fragment {//implements SearchView.OnQueryTe
         if (Controller.pref.getString(USER_TYPE, "").equals("1") || // doctor=1 , nurse=2, super medical=3 , admin nurse=4,pharmacist=5
             Controller.pref.getString(USER_TYPE, "").equals("3")){
 
-            item.setVisible(true);
+//            item.setVisible(true);
             item2.setVisible(true);
             item3.setVisible(true);
         }else if(Controller.pref.getString(USER_TYPE, "").equals("4")||
                 Controller.pref.getString(USER_TYPE, "").equals("5")) {
             Log.e("user_type", "user_type" + Controller.pref.getString(USER_TYPE, ""));
-            item.setVisible(false);
+//            item.setVisible(false);
             item2.setVisible(true);
             item3.setVisible(true);
         }else{
-            item.setVisible(false);
+//            item.setVisible(false);
             item2.setVisible(false);
             item3.setVisible(true);
         }

@@ -48,12 +48,13 @@ public class Controller extends Application {
     public static final String TAG = Controller.class.getSimpleName();
     public static ConnectivityManager connectivityManager;
     public static String ORDER_DEP_CD = "";
-    public static String DATABASE_V="0.0";
+    public static String DATABASE_V = "0.0";
 
     // google play root pulse
 
-  //    public static String ROOT = "http://pulse.moh.gov.ps/newehosapi/index.php/Android_api/";
-  public static String ROOT = "http://10.20.28.208/newehosapi/index.php/Android_api/";
+    // public static String ROOT = "http://pulse.hamad.ps/ehosapi/index.php/Android_api/";
+    public static String ROOT = "http://10.20.28.208/ehosapi/index.php/Android_api/";
+    //  public static String ROOT = "http://192.168.2.32/ehosapi/index.php/Android_api/";
 
     //Turky
 //    public static String ROOT = "http://10.30.60.20/newehosapi/index.php/Android_api/";
@@ -61,14 +62,9 @@ public class Controller extends Application {
     public static String ROOT_PDF = "http://apps.moh.gov.ps/newwebarch/index.php/Androidhos_api/";
     public static String ROOT_RAD = "http://pulse.moh.gov.ps/newehos/index.php/RadViewer/api_mobile";
     public static String ROOT_RAD_python = "http://pacs.moh.gov.ps" + ":1103/api";
-     public static String ROOT_RAD_python_img = "http://pacs.moh.gov.ps" + ":1103/api_img";
-//    public static String ROOT_RAD_python = "http://10.30.60.25" + ":1103/api";  // turky
-//    public static String ROOT_RAD_python_img = "http://10.30.60.25" + ":1103/api_img"; // turky
-//    public static String ROOT_RAD_python = "http://10.20.34.50" + ":1103/api";  // andonisi
-//    public static String ROOT_RAD_python_img = "http://10.20.34.50" + ":1103/api_img"; // andonisi
-//    public static String ROOT_RAD_python = "http://192.168.5.9" + ":1103/api";  // dora
-//    public static String ROOT_RAD_python_img = "http://192.168.5.9" + ":1103/api_img"; // dora
-
+    public static String ROOT_RAD_python_img = "http://Pacs.hamad.ps" + ":1103/api_img";
+    //public static String ROOT_RAD_python = "http://192.168.2.6" + ":1103/api";  // hamad
+    //  public static String ROOT_RAD_python_img = "http://192.168.2.6" + ":1103/api_img"; // hamad
 
 
     public static String ROOT_RAD_base46 = "http://10.20.77.21/newehos/index.php/RadViewerNew/api_mobile";

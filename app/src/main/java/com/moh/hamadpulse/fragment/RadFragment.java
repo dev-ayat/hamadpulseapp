@@ -5,8 +5,6 @@ import static com.moh.hamadpulse.constants.ConstShared.USER_TYPE;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -53,7 +51,7 @@ public class RadFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (Controller.pref.getString(USER_TYPE, "").equals("2") || Controller.pref.getString(USER_TYPE, "").equals("4"))
-                    Toast.makeText(getContext(), "اضافة طلبات المختبرات من ضمن صلاحيات الدكتور ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "اضافة طلبات الأشعة من ضمن صلاحيات الدكتور ", Toast.LENGTH_SHORT).show();
                 else
                     ((ActivityPatient) getActivity()).CallFragment(new RadiologyFragment());
 
@@ -76,13 +74,13 @@ public class RadFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.action_dept);
-        item.setVisible(false);
-        super.onPrepareOptionsMenu(menu);
-
-    }
+//    @Override
+//    public void onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.action_dept);
+//        item.setVisible(false);
+//        super.onPrepareOptionsMenu(menu);
+//
+//    }
 
     public void onResume() {
         super.onResume();

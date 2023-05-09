@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0eb19c</color>
-    <color name="colorPrimaryDark">#3dc4b4</color>
-    <color name="colorAccent">#3dc4b4</color>
+    hamad_primary
+    <color name="hamad_primary">#952E4B</color>
+    <color name="colorPrimary">#952E4B</color>
+    <color name="colorPrimaryDark">#952E4B</color>
+    <color name="colorAccent">#952E4B</color>
     <color name="greenlight">#293dc4b4</color>
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
