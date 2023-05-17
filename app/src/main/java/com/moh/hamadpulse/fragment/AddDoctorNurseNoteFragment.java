@@ -44,19 +44,25 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class AddDoctorNurseNoteFragment extends DialogFragment {
-    String  patid,  patadmcd, user_id, patientstatus, notes;
+    String patid, patadmcd, user_id, patientstatus, notes;
     Button btn_add_note;
     Spinner PatientStatusSpinner;
     TextInputEditText txti_notes;
     ArrayList<AdmPatientConst> patientStatusArrayList;
     PatientStatusSpinnerAdapter patientStatusSpinnerAdapter;
     public String fragment_cd = "29";
+    InterfacePatient mInterfacePatient;
+    int type;
 
     public AddDoctorNurseNoteFragment() {
         // Required empty public constructor
     }
 
-    InterfacePatient mInterfacePatient;
+    public AddDoctorNurseNoteFragment(InterfacePatient mInterfacePatient, int type) {
+        this.mInterfacePatient = mInterfacePatient;
+        this.type = type;
+
+    }
 
     public InterfacePatient getmInterfacePatient() {
         return mInterfacePatient;
@@ -182,7 +188,7 @@ public class AddDoctorNurseNoteFragment extends DialogFragment {
         map.put("USER_ID", user_id);
         map.put("ADM_STATUS", patientstatus);
         map.put("ADM_NOTE", notes);
-
+        map.put("NOTE_TYPE", type + "");
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "1");
@@ -249,5 +255,10 @@ public class AddDoctorNurseNoteFragment extends DialogFragment {
     public void onResume() {
         super.onResume();
         ((ActivityPatient) getActivity()).setTitle("إضافة الأوامر الطبية");
+        if (type == 1) {
+            ((ActivityPatient) getActivity()).setTitle("إضافة الملاحظات الطبية");
+        } else {
+            ((ActivityPatient) getActivity()).setTitle("إضافة الملاحظات التمريضية ");
+        }
     }
 }

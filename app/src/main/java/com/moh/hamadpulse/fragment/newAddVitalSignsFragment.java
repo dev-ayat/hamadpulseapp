@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
@@ -40,8 +41,10 @@ public class newAddVitalSignsFragment extends DialogFragment {
     String patname, patid, admdate, patadmcd, user_id,
             V_txtiTEMP, V_txtiSaO2, V_txtiRRmin, V_txtiEtCO2mmHg,
             V_txtiHeartRate, V_txtiNIBP,V_txtiNIBP_lower, V_txtiUrine, V_txtiCVP, V_txtiIBP;
+    int v_stool;
     TextInputEditText txtiTEMP, txtiSaO2, txtiRRmin, txtiEtCO2mmHg,txti_notes,
             txtiHeartRate, txtiNIBP,txti_NIBP_lower, txtiUrine, txtiCVP, txtiIBP;
+    RadioGroup rgroub_stool;
     FloatingActionButton btn_add_vital;
     LinearLayout containerVitalSign;
     public String fragment_cd = "11";
@@ -120,7 +123,8 @@ public class newAddVitalSignsFragment extends DialogFragment {
         txtiIBP = view.findViewById(R.id.txti_IBP);
         btn_add_vital = view.findViewById(R.id.btn_add_vital);
         user_id = Controller.pref.getString("USER_ID", "");
-
+        rgroub_stool = view.findViewById(R.id.rg_stool);
+        rgroub_stool.check(R.id.rbtn_notpass);
         btn_add_vital.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +139,7 @@ public class newAddVitalSignsFragment extends DialogFragment {
                 V_txtiUrine = txtiUrine.getText().toString();
                 V_txtiCVP = txtiCVP.getText().toString();
                 V_txtiIBP = txtiIBP.getText().toString();
+                v_stool = rgroub_stool.getCheckedRadioButtonId() == R.id.rbtn_notpass ? 0 : 1;
 
                 ArrayList<View> mListViews = new ArrayList<>();
                 mListViews = getAllChildren(containerVitalSign);
@@ -202,6 +207,7 @@ public class newAddVitalSignsFragment extends DialogFragment {
         map.put("IBP_VALUES", V_txtiIBP);
         map.put("NOTE", txti_notes.getText().toString());
         map.put("P_ORDER_DEP_CD", Controller.ORDER_DEP_CD);
+        map.put("P_STOOL", v_stool + "");
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "1");

@@ -47,7 +47,7 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNoteAdapter.NoteInterface {
+public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAdapter.NoteInterface {
 
     FloatingActionButton add_note;
     TextView txtpatid, txtpatName, txtadmdate, txtdaycount;
@@ -58,18 +58,10 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
     LinearLayout statusresult, emptyresult, statuslblresult;
     String fragment_cd = "31";
     InterfacePatient mInterfacePatient;
-    int type;
 
-    public DoctorNurseNoteFragment() {
+    public DoctorOrdersFragment() {
         // Required empty public constructor
-        Log.e("test", "DoctorNurseNoteFragment");
-    }
-
-
-    public DoctorNurseNoteFragment(InterfacePatient mInterfacePatient, int type) {
-        this.mInterfacePatient = mInterfacePatient;
-        this.type = type;
-
+        Log.e("test", "DoctorOrdersFragment");
     }
 
     public InterfacePatient getmInterfacePatient() {
@@ -112,8 +104,8 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        patid = ((ActivityPatient)getActivity()).getmCardviewDataModel().getPatid()+"";
-        patadmcd = ((ActivityPatient)getActivity()).getmCardviewDataModel().getAdmcd()+"";
+        patid = ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "";
+        patadmcd = ((ActivityPatient) getActivity()).getmCardviewDataModel().getAdmcd() + "";
         user_id = Controller.pref.getString("USER_ID", "");
         PrepareGetpatientNote();
     }
@@ -123,7 +115,6 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
         Map<String, String> map = new HashMap<>();
         map.put("PATRIC_CD", patid);
         map.put("ADM_CD", patadmcd);
-        map.put("NOTE_TYPE ", type + "");
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "2");
@@ -131,7 +122,7 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
         map.put("TRANS_DESCRIPTION_IN", "عرض الملاحطات");
         map.put("HOS_NO", ((ActivityPatient) getActivity()).getmCardviewDataModel().getHOS_NO() + "");
-        mInterfacePatient.showLoading(true);
+        //  mInterfacePatient.showLoading(true);
         CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.GET_NOTE_FOR_PATIENT_URL, map, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -142,7 +133,8 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
                     Log.e("jsonarray", "ayat" + jsonArray.toString());
                     if (jsonArray.length() > 0) {
                         Gson gson = new Gson();
-                        Type type = new TypeToken<List<GetNoteForPatient>>() {}.getType();
+                        Type type = new TypeToken<List<GetNoteForPatient>>() {
+                        }.getType();
                         patientNoteArray = gson.fromJson(jsonArray.toString(), type);
                         Log.e("list", patientNoteArray.toString());
                         Log.e("size", patientNoteArray.size() + "");
@@ -155,14 +147,14 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                mInterfacePatient.showLoading(false);
+                //  mInterfacePatient.showLoading(false);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(final VolleyError volleyError) {
                 Log.e("onErrorResponse", "error : " + volleyError.getMessage());
-                mInterfacePatient.showLoading(false);
+                //  mInterfacePatient.showLoading(false);
                 Controller.view_error(volleyError, getContext());
             }
         });
@@ -192,8 +184,9 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
         note_recycler_view.setAdapter(doctorNurseNoteAdapter);
         doctorNurseNoteAdapter.notifyDataSetChanged();
     }
+
     public void ShowAddNotes() {
-        ((ActivityPatient) getActivity()).CallFragment(new AddDoctorNurseNoteFragment(mInterfacePatient, type));
+        ((ActivityPatient) getActivity()).CallFragment(new AddDoctorNurseNoteFragment());
     }
 
     @Override
@@ -287,11 +280,7 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
     @Override
     public void onResume() {
         super.onResume();
-        if (type == 1) {
-            ((ActivityPatient) getActivity()).setTitle("ملاحظات الطبيب");
-        } else {
-            ((ActivityPatient) getActivity()).setTitle("ملاحظات التمريض ");
-        }
+        ((ActivityPatient) getActivity()).setTitle("أوامر الطبيب");
     }
 
 

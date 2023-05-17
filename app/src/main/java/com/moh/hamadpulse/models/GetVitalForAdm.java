@@ -82,6 +82,10 @@ public class GetVitalForAdm implements AttributeEnumerable {
     @Expose
     private String HC;
 
+    @SerializedName("STOOL")
+    @Expose
+    private String STOOL;
+
     /**
      * No args constructor for use in serialization
      */
@@ -253,6 +257,14 @@ public class GetVitalForAdm implements AttributeEnumerable {
         return cVP;
     }
 
+    public String getSTOOL() {
+        return STOOL;
+    }
+
+    public void setSTOOL(String STOOL) {
+        this.STOOL = STOOL;
+    }
+
     public void setCVP(Object cVP) {
         this.cVP = cVP;
     }
@@ -323,7 +335,7 @@ public class GetVitalForAdm implements AttributeEnumerable {
 
     @Override
     public int getAttributeCountable() {
-        return 16;
+        return 14;
     }
 
     public static class Iyad {
@@ -405,28 +417,25 @@ public class GetVitalForAdm implements AttributeEnumerable {
                         if (Integer.parseInt(getRRMIN()) > 30) {
                             mIyad.setColor(Color.RED);
                         }
-                    }
-                    catch (Exception e)
-                    {
-                        Log.e("ERROR",e.getMessage());
+                    } catch (Exception e) {
+                        Log.e("ERROR", e.getMessage());
                         e.printStackTrace();
                     }
                 }
                 attribute = mIyad;
                 break;
+//            case 5:
+//                attribute = getEtCO2() != null ? getEtCO2() : "";
+//                break;
             case 5:
-                attribute = getEtCO2() != null ? getEtCO2() : "";
-                break;
-            case 6:
                 mIyad = new Iyad();
-                if(getHeartRate() != null) {
+                if (getHeartRate() != null) {
                     mIyad.setVal(getHeartRate());
                     try {
                         if (Integer.parseInt(getHeartRate()) > 100 || Integer.parseInt(getHeartRate()) < 60) {
                             mIyad.setColor(Color.RED);
                         }
-                    }
-                    catch (Exception e)
+                    } catch (Exception e)
                     {
                         Log.e("ERROR",e.getMessage());
                         e.printStackTrace();
@@ -434,7 +443,7 @@ public class GetVitalForAdm implements AttributeEnumerable {
                 }
                 attribute = mIyad;
                 break;
-            case 7:
+            case 6:
                 mIyad = new Iyad();
                 if(getNIBP() != null) {
                     mIyad.setVal(getNIBP()+"/"+getNIBP_LOWER());
@@ -445,37 +454,57 @@ public class GetVitalForAdm implements AttributeEnumerable {
                         if (Integer.parseInt(getNIBP_LOWER()) > 90 || Integer.parseInt(getNIBP_LOWER()) < 50) {
                             mIyad.setColor(Color.RED);
                         }
-                    }
-                    catch (Exception e)
-                    {
-                        Log.e("ERROR",e.getMessage());
+                    } catch (Exception e) {
+                        Log.e("ERROR", e.getMessage());
                         e.printStackTrace();
                     }
                 }
                 attribute = mIyad;
                 break;
-            case 8:
+            case 7:
                 attribute = getUrineOut() != null ? getUrineOut() : "";
                 break;
+            case 8:
+                mIyad = new Iyad();
+                if (getSTOOL() != null) {
+                    mIyad.setVal(getSTOOL());
+                    try {
+                        if (Integer.parseInt(getSTOOL()) == 0) {
+                            mIyad.setVal("NOT PASS");
+                            mIyad.setColor(Color.RED);
+                        } else {
+                            mIyad.setVal("PASS");
+                            mIyad.setColor(Color.GREEN);
+
+
+                        }
+                    } catch (Exception e) {
+                        Log.e("ERROR", e.getMessage());
+                        e.printStackTrace();
+                    }
+                }
+                attribute = mIyad;
+
+                break;
+//            case 9:
+//                attribute = getCVP() != null ? getCVP() : "";
+//                break;
+//            case 10:
+//                attribute = getIBP() != null ? getIBP() : "";
+//                break;
             case 9:
-                attribute = getCVP() != null ? getCVP() : "";
-                break;
-            case 10:
-                attribute = getIBP() != null ? getIBP() : "";
-                break;
-            case 11:
                 attribute = getDOC_NAME() != null ? getDOC_NAME() : "";
                 break;
-            case 12:
+            case 10:
                 attribute = getWEIGHT() != null ? getWEIGHT() : "";
                 break;
-            case 13:
+            case 11:
                 attribute = getHEIGHT() != null ? getHEIGHT() : "";
                 break;
-            case 14:
+            case 12:
                 attribute = getBMI() != null ? getBMI() : "";
                 break;
-            case 15:
+            case 13:
                 attribute = getHC() != null ? getHC() : "";
                 break;
             default:

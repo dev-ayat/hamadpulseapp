@@ -9,15 +9,16 @@ public class BasicInfoModel {
     private String time_instance;
     @SerializedName("modality")
     private String modality;
-    @SerializedName("img_link")
-    private String img_link;
+    @SerializedName("ohiv_link")
+    private String ohiv_link;
 
-    public String getImg_link() {
-        return img_link;
+
+    public String getOhiv_link() {
+        return ohiv_link;
     }
 
-    public void setImg_link(String img_link) {
-        this.img_link = img_link;
+    public void setOhiv_link(String ohiv_link) {
+        this.ohiv_link = ohiv_link;
     }
 
     public String getTime_instance() {

@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/styleFragmentPatient"
     android:clickable="true"
+    android:id="@+id/main_layout"
+    android:orientation="vertical"
     android:tag="labres_fragment">
 
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/imgLoadingLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:indicatorColor="@color/colorPrimary"
+            app:indicatorName="BallPulseIndicator" />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +37,7 @@
             android:layout_marginVertical="7dp">
 
             <LinearLayout
+                android:id="@+id/from_p_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -46,17 +63,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:orientation="horizontal"
                 android:gravity="end">
+
+                <EditText
+                    android:id="@+id/txt_PID"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:hint="Patient ID"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:textAlignment="center"
+                    android:visibility="gone" />
 
                 <ImageButton
                     android:id="@+id/get_rad"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/date_search"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
-                    android:backgroundTint="@color/colorPrimary" />
+                    android:backgroundTint="@color/colorPrimary"
+                    android:src="@drawable/date_search" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -162,13 +193,8 @@
                 android:src="@drawable/xrayphoto" />
 
 
-
-
         </LinearLayout>
     </LinearLayout>
 
 
-
-
-
-</RelativeLayout>
+</LinearLayout>

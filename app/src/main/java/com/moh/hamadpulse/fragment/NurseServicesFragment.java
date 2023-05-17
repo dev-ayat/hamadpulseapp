@@ -1,5 +1,7 @@
 package com.moh.hamadpulse.fragment;
 
+import static com.moh.hamadpulse.Controller.mInterfacePatient;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +19,7 @@ import com.moh.hamadpulse.R;
 
 public class NurseServicesFragment extends Fragment implements View.OnClickListener {
     TextView lblscname, lbordername;
-    CardView CV_in_out_take, CV_Diabetic, CV_Changing_Position, CV_V_Sighn_Notes, CV_View_O2;
+    CardView CV_in_out_take, CV_Diabetic, CV_Changing_Position, CV_V_Sighn_Notes, CV_View_O2, CV_nursenote;
 
     public NurseServicesFragment() {
 
@@ -40,14 +42,18 @@ public class NurseServicesFragment extends Fragment implements View.OnClickListe
         // CV_Changing_Position = view.findViewById(R.id.CV_Changing_Position);
         CV_V_Sighn_Notes = view.findViewById(R.id.CV_V_sighn);
         // CV_View_O2 = view.findViewById(R.id.CV_View_O2);
+        CV_nursenote = view.findViewById(R.id.CV_nursenote);
         if (!Controller.ORDER_DEP_CD.equals("2")) {
             CV_in_out_take.setOnClickListener(this);
             //   CV_Diabetic.setOnClickListener(this);
             //   CV_Changing_Position.setOnClickListener(this);
             CV_V_Sighn_Notes.setOnClickListener(this);
             //   CV_View_O2.setOnClickListener(this);
+            CV_nursenote.setOnClickListener(this);
         } else {
             CV_V_Sighn_Notes.setOnClickListener(this);
+            CV_nursenote.setOnClickListener(this);
+
             CV_in_out_take.setVisibility(View.GONE);
             //  CV_Diabetic.setVisibility(View.GONE);
             //  CV_Changing_Position.setVisibility(View.GONE);
@@ -79,6 +85,9 @@ public class NurseServicesFragment extends Fragment implements View.OnClickListe
             // in out take
             case R.id.CV_in_out_take:
                 ((ActivityPatient) getActivity()).CallFragment(new View_Take_In_Out());
+                break;
+            case R.id.CV_nursenote:
+                ((ActivityPatient) getActivity()).CallFragment(new DoctorNurseNoteFragment(mInterfacePatient, 2));
                 break;
             // Diabetic
            /* case R.id.CV_Diabetic:

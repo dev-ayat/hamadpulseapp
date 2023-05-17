@@ -47,7 +47,7 @@ public class AddVitalSignsFragment extends DialogFragment {
     RecyclerView rv_vitalsignsConst;
     VitalSignsConstAdapter vitalSignsConstAdapter;
     TextInputLayout prusserlabl;
-
+  /// هدا الشغل قديم  وملغي
     public AddVitalSignsFragment() {
         // Required empty public constructor
     }

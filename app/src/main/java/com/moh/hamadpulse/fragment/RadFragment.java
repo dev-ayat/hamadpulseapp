@@ -43,7 +43,7 @@ public class RadFragment extends Fragment {
         cvRadResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((ActivityPatient) getActivity()).CallFragment(new newradresFragment((InterfacePatient) getContext()));
+                ((ActivityPatient) getActivity()).CallFragment(new newradresFragment((InterfacePatient) getContext(), false));
             }
         });
 // طلب صورة أشعة
@@ -51,7 +51,7 @@ public class RadFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (Controller.pref.getString(USER_TYPE, "").equals("2") || Controller.pref.getString(USER_TYPE, "").equals("4"))
-                    Toast.makeText(getContext(), "اضافة طلبات الأشعة من ضمن صلاحيات الدكتور ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "اضافة طلبات المختبرات من ضمن صلاحيات الدكتور ", Toast.LENGTH_SHORT).show();
                 else
                     ((ActivityPatient) getActivity()).CallFragment(new RadiologyFragment());
 

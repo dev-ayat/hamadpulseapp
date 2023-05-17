@@ -4,13 +4,17 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +40,7 @@ import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.adapters.RadViewrAdapter;
 import com.moh.hamadpulse.models.GetRadViewer;
 import com.moh.hamadpulse.models.RadViewModel;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,27 +53,32 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class newradresFragment extends Fragment implements OnAdapterClick {
-
+public class newradresFragment extends Fragment implements OnAdapterClick, com.moh.hamadpulse.adapters.RadViewrAdapter.Loader {
+    LinearLayout main_layout;
     private static com.moh.hamadpulse.adapters.RadViewrAdapter RadViewrAdapter;
     private static RecyclerView radrecyclerView;
     private static ArrayList<GetRadViewer> Carddata;
     public String fragment_cd = "6";
     public String foldername = "", myphoto;
     ImageButton get_rad;
+    EditText txt_PID;
     TextView rad_count;
     CheckBox select_all;
     String txtdatetime, txtmodality, txtimageurl;
-    LinearLayout radheader,emptyEfile_layout;
+    LinearLayout radheader, emptyEfile_layout, from_p_layout;
     InterfacePatient mInterfacePatient;
+    AVLoadingIndicatorView imgLoading;
     private RecyclerView.LayoutManager layoutManager;
+    boolean flag;
 
     public newradresFragment() {
         Log.e("test", newradresFragment.class.getSimpleName());
     }
 
-    public newradresFragment(InterfacePatient mInterfacePatient) {
+    public newradresFragment(InterfacePatient mInterfacePatient, boolean flag) {
         this.mInterfacePatient = mInterfacePatient;
+        this.flag = flag;
+
     }
 
 
@@ -89,32 +99,71 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
         radheader = view.findViewById(R.id.radheader);
         get_rad = view.findViewById(R.id.get_rad);
         rad_count = view.findViewById(R.id.rad_count);
+        imgLoading = view.findViewById(R.id.imgLoadingLoader);
         select_all = view.findViewById(R.id.select_all);
         emptyEfile_layout = view.findViewById(R.id.emptyEfile_layout);
+        from_p_layout = view.findViewById(R.id.from_p_layout);
+        txt_PID = view.findViewById(R.id.txt_PID);
+        main_layout = view.findViewById(R.id.main_layout);
+        if (flag) {
+            txt_PID.setVisibility(View.VISIBLE);
+            //set margin top by tool bar size
+            TypedValue tv = new TypedValue();
+            getActivity().getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+            int actionBarHeight = getResources().getDimensionPixelSize(tv.resourceId);
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+            layoutParams.topMargin = actionBarHeight;
+            main_layout.setLayoutParams(layoutParams);
+        }
         Carddata = new ArrayList<>();
         RadViewrAdapter = new RadViewrAdapter(Carddata, getContext(), this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         radrecyclerView.setLayoutManager(mLayoutManager);
         radrecyclerView.setAdapter(RadViewrAdapter);
         setHasOptionsMenu(true);/// to disable icon from menu
+
+        txt_PID.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0)
+                    txt_PID.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         get_rad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String r_cound=rad_count.getText().toString().trim();
-                if(r_cound.isEmpty()&& !select_all.isChecked())
+                String r_cound = rad_count.getText().toString().trim();
+                String pid = txt_PID.getText().toString().trim();
+                if (flag && (pid.isEmpty() || pid.length() < 9)) {
+                    txt_PID.setError("يجب أن لا يقل رقم الهوية عن 9 أرقام");
+                    return;
+                }
+                if (r_cound.isEmpty() && !select_all.isChecked()) {
                     Toast.makeText(getContext(), "please select the count", Toast.LENGTH_SHORT).show();
-                else
-                    Getpacsdata(select_all.isChecked()?"all":r_cound);
+                    return;
+                }
+                Getpacsdata(select_all.isChecked() ? "" : r_cound);
             }
         });
         select_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b)
+                if (b)
                     rad_count.setText("");
             }
         });
-        Getpacsdata("2");
+        if (!flag)
+            Getpacsdata("2");
 
         return view;
     }
@@ -136,7 +185,8 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
     public void onResume() {
         super.onResume();
         // Set title bar
-        ((ActivityPatient) getActivity()).setTitle("نتائج الأشعة");
+        if (getActivity() instanceof ActivityPatient)
+            ((ActivityPatient) getActivity()).setTitle("نتائج الأشعة");
 
     }
 
@@ -161,6 +211,7 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
 //        ((ActivityPatient) getActivity()).CallFragment(new Image_View_Fragment(image));
 
     }
+
     private String readFromFile(Context context) {
 
         String ret = "";
@@ -181,8 +232,7 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
                 inputStream.close();
                 ret = stringBuilder.toString();
             }
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             Log.e("login activity", "File not found: " + e.toString());
         } catch (IOException e) {
             Log.e("login activity", "Can not read file: " + e.toString());
@@ -190,25 +240,29 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
 
         return ret;
     }
+
     public void writeToFile(String data, Context context) {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             Toast.makeText(getContext(), getActivity().getFilesDir()+"/config.txt", Toast.LENGTH_LONG).show();
             outputStreamWriter.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
+
     public void Getpacsdata(String count) {
-        Controller.mInterfacePatient.showLoading(true);
+        showLoading(true);
         try {
+            Log.d("MSG", flag ? txt_PID.getText().toString().trim().length() + "" : "test");
             String URL = "";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("EmpID", (Controller.pref.getString("USER_ID", "")));
-            //   jsonBody.put("PatientID", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
-            jsonBody.put("PatientID", "802331306");
+            jsonBody.put("PatientID", flag ? txt_PID.getText().toString().trim() :
+                    ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
+            jsonBody.put("PatientID", "802331306"); // hamad
+
             jsonBody.put("Modality", "*");
             jsonBody.put("Count", count);
             jsonBody.put("ImageDate", "");
@@ -216,6 +270,7 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
             jsonBody.put("appToken", "123a665a4592042");
             Log.d("root:  ", Controller.ROOT_RAD_python);
             Log.d("root:  ", jsonBody + "");
+            Log.d("MAP:  ", jsonBody.toString() + "");
             JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, Controller.ROOT_RAD_python, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -235,29 +290,30 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
 //                    RadViewrAdapter.setList(model.getInstance_info().getBasic_info());
 //                    String image=model.getInstance_info().getBasic_info().get(0).getImage_base64();
 
-                    if(model!=null) {
-                        Log.d("status",model.getStatus());
-                        if (model.getStatus().equals("1")) {
-                            RadViewrAdapter.setList(model.getInstance_info().getBasic_info());
-                            RadViewrAdapter.notifyDataSetChanged();
-                        } else {
-                            radrecyclerView.setVisibility(View.GONE);
-                            emptyEfile_layout.setVisibility(View.VISIBLE);
+                        if (model != null) {
+                            Log.d("status", model.getStatus());
+//                        Log.d("img_link",model.getInstance_info().getBasic_info().get(0).getImg_link());
+                            if (model.getStatus().equals("1")) {
+                                RadViewrAdapter.setList(model.getInstance_info().getBasic_info());
+                                RadViewrAdapter.notifyDataSetChanged();
+                            } else {
+                                radrecyclerView.setVisibility(View.GONE);
+                                emptyEfile_layout.setVisibility(View.VISIBLE);
+                            }
                         }
-                    }
 //                    writeToFile(image,getContext());
 //                    Log.d("Tamam",model.getInstance_info().getBasic_info().get(0).getImage_base64().toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Controller.mInterfacePatient.showLoading(false);
+                        showLoading(false);
                     }
-                    Controller.mInterfacePatient.showLoading(false);
+                    showLoading(false);
                 }
-               }, new Response.ErrorListener() {
+            }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Controller.view_error(error,getContext());
-                    Controller.mInterfacePatient.showLoading(false);
+                    Controller.view_error(error, getContext());
+                    showLoading(false);
                 }
             });
 
@@ -275,70 +331,10 @@ public class newradresFragment extends Fragment implements OnAdapterClick {
 
 
     }
-//    public void Getpacsdata(String count) {
-//        mInterfacePatient.showLoading(true);
-//
-//
-//
-//            Map<String, String> map = new HashMap<>();
-//            map.put("EmpID", "800112625");
-//            map.put("PatientID", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
-//            //  jsonBody.put("PatientID", "913190500");
-//
-//            map.put("Modality", "*");
-//            map.put("Count", count);
-//            map.put("ImageDate", "");
-//            map.put("Platform", "mobile");
-//            map.put("appToken", "123a665a4592042");
-//            MyRequest.makeRquest(getContext(), Controller.ROOT_RAD_python,
-//                    map, new MyRequest.CallBack() {
-//                        @Override
-//                        public void Result(String response) {
-//
-//                            JSONObject mJSONObject = null;
-//                            try {
-//                                mJSONObject = new JSONObject(response);
-//                                JSONObject jsonObject = mJSONObject.getJSONObject("data");
-//                                Gson gson = new Gson();
-//                                RadViewModel model = gson.fromJson(jsonObject.toString(),
-//                                        RadViewModel.class);
-//                                if(model!=null)
-//                                if(model.getStatus().equals("1"))
-//                                RadViewrAdapter.setList(model.getInstance_info().getBasic_info());
-//                                else
-//                                    emptyEfile_layout.setVisibility(View.VISIBLE);
-//
-//
-////                    String image=model.getInstance_info().getBasic_info().get(0).getImage_base64();
-//
-////                    writeToFile(image,getContext());
-////                    Log.d("Tamam",model.getInstance_info().getBasic_info().get(0).getImage_base64().toString());
-//                                RadViewrAdapter.notifyDataSetChanged();
-//
-//                            } catch (JSONException e) {
-//
-//                                e.printStackTrace();
-//                                Log.e("api", e.getMessage());
-//                                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                mInterfacePatient.showLoading(false);
-//
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void Error(VolleyError error) {
-//                            Controller.view_error(error, getContext());
-//                           mInterfacePatient.showLoading(false);
-//                        }
-//                    });
-//
-//
-//
-//
-////         Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_LONG).show();
-//
-//
-//    }
+
+    public void showLoading(boolean b) {
+        imgLoading.setVisibility(b ? View.VISIBLE : View.GONE);
+    }
+
 
 }

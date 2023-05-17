@@ -40,6 +40,7 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.google.android.material.navigation.NavigationView;
 import com.moh.hamadpulse.Controller;
+import com.moh.hamadpulse.InterfacePatient;
 import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.adapters.ExpandableListAdapter;
 import com.moh.hamadpulse.constants.CustomRequest;
@@ -52,10 +53,12 @@ import com.moh.hamadpulse.fragment.ParChartFragment;
 import com.moh.hamadpulse.fragment.PatientFragment;
 import com.moh.hamadpulse.fragment.PieChartFragment;
 import com.moh.hamadpulse.fragment.VersionInfoFragment;
+import com.moh.hamadpulse.fragment.newradresFragment;
 import com.moh.hamadpulse.models.MenuModel;
 import com.moh.hamadpulse.models.PrivMenu;
 import com.moh.hamadpulse.models.Screen;
 import com.squareup.picasso.Picasso;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +69,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, InterfacePatient {
     TextView txth_username, txtdept;
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
@@ -76,6 +79,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public static final int REQUEST_CODE_PHONE_STATE_READ = 100;
     private int checkedPermission = PackageManager.PERMISSION_DENIED;
     TelephonyManager manager;
+    InterfacePatient mInterfacePatient;
+    private AVLoadingIndicatorView imgLoading;
 
     public void setOrientation() {
 
@@ -221,6 +226,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        mInterfacePatient = this;
 //        requestPermission();
 
 
@@ -246,7 +252,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                        Log.e("token", token);
 //                    }
 //                });
-
+        imgLoading = findViewById(R.id.imgLoading);
         setOrientation();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -550,6 +556,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                             ///end spc dept
                             myfragment = new PatientFragment(screenid);
                             break;
+                        //rad
+                        case 2587:
+                            myfragment = new newradresFragment(mInterfacePatient, true);
+                            break;
                         case 765:
                             myfragment = new HomeFragment();
                             break;
@@ -590,6 +600,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onPause() {
 
         super.onPause();
+    }
+
+    @Override
+    public void showLoading(boolean b) {
+        if (b)
+            imgLoading.setVisibility(View.VISIBLE);
+        else
+            imgLoading.setVisibility(View.GONE);
     }
 
 

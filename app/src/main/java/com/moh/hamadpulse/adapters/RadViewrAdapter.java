@@ -1,7 +1,5 @@
 package com.moh.hamadpulse.adapters;
 
-import static com.moh.hamadpulse.Controller.mInterfacePatient;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -26,6 +24,7 @@ import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.OnAdapterClick;
 import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.dialog.DialogMsg;
+import com.moh.hamadpulse.fragment.newradresFragment;
 import com.moh.hamadpulse.models.BasicInfoModel;
 import com.moh.hamadpulse.models.GetRadViewer;
 import com.moh.hamadpulse.models.ImageBase64Model;
@@ -36,11 +35,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-
-
 public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     OnAdapterClick mOnAdapterClick;
+    Loader loader;
     private ArrayList<GetRadViewer> radViewerList;
     private ArrayList<BasicInfoModel> list;
     private Context context;
@@ -54,10 +52,11 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.list = list;
     }
 
-    public RadViewrAdapter(ArrayList<GetRadViewer> radViewerList, Context context, OnAdapterClick mOnAdapterClick) {
+    public RadViewrAdapter(ArrayList<GetRadViewer> radViewerList, Context context, newradresFragment fragment) {
         this.radViewerList = radViewerList;
         this.context = context;
-        this.mOnAdapterClick = mOnAdapterClick;
+        this.mOnAdapterClick = (OnAdapterClick) fragment;
+        this.loader = (Loader) fragment;
 
     }
 
@@ -72,7 +71,7 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
-                    Toast.makeText(context, "done", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "done", Toast.LENGTH_LONG).show();
             outputStreamWriter.close();
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
@@ -82,24 +81,24 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         RadViewholder mradViewholder = (RadViewrAdapter.RadViewholder) holder;
-        if(list==null){
-        GetRadViewer data = radViewerList.get(position);
-        mradViewholder.txtdatetime.setText(data.getInstanceTimestamp());
-        mradViewholder.txtmodality.setText(data.getModality());
-        // mradViewholder.txtimageurl.setText(data.getInstanceImage());
-        mcontroller.Msg_DIALOG = new DialogMsg(context);
-        Log.e("radv", "ayaaat" + data.getInstanceImage());
+        if(list==null) {
+            GetRadViewer data = radViewerList.get(position);
+            mradViewholder.txtdatetime.setText(data.getInstanceTimestamp());
+            mradViewholder.txtmodality.setText(data.getModality());
+            // mradViewholder.txtimageurl.setText(data.getInstanceImage());
+            mcontroller.Msg_DIALOG = new DialogMsg(context);
+            Log.e("radv", "ayaaat" + data.getInstanceImage());
 
-        mradViewholder.imglink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            mradViewholder.imglink.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 //                Log.e("base64", "onClick: " + data.getImage_base64());
 //                String url = "data:image/webp;base64," + data.getImage_base64();
-                mOnAdapterClick.myClick(data.getImage_base64());
+                    mOnAdapterClick.myClick(data.getImage_base64());
 //                mOnAdapterClick.myClick(url);
 
-            }
-        });
+                }
+            });
 
             mradViewholder.ohiv_link.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -136,11 +135,12 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             mradViewholder.ohiv_link.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String ohiv_link = data.getImg_link();
+                    String ohiv_link = data.getOhiv_link();
                     Log.e("ohiv_link: ", "" + ohiv_link);
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ohiv_link));
-                    context.startActivity(browserIntent);
-
+                    if (ohiv_link != null) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(ohiv_link));
+                        context.startActivity(browserIntent);
+                    }
                 }
             });
         }
@@ -159,63 +159,63 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private void getImageBase64(String instance) {
-       mInterfacePatient.showLoading(true);
+        loader.showLoading(true);
 //       Log.d("show_loder",(mInterfacePatient==null)+"");
         try {
-        JSONObject jsonBody = new JSONObject();
+            JSONObject jsonBody = new JSONObject();
             jsonBody.put("EmpID", (Controller.pref.getString("USER_ID", "")));
             jsonBody.put("Instance", instance + "");
             jsonBody.put("Platform", "mobile");
             jsonBody.put("appToken", "123a665a4592042");
             Log.d("paythonmap:  ", jsonBody.toString());
-        JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, Controller.ROOT_RAD_python_img,
-                jsonBody, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.d("Responsepaytonimg:  ", response.toString());
+            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, Controller.ROOT_RAD_python_img,
+                    jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Log.d("Responsepaytonimg:  ", response.toString());
 
-                JSONObject jsonObject = null;
+                    JSONObject jsonObject = null;
 
-                try {
-                    jsonObject = response.getJSONObject("data");
-                    Gson gson = new Gson();
-                    ImageBase64Model model = gson.fromJson(jsonObject.toString(),
-                            ImageBase64Model.class);
+                    try {
+                        jsonObject = response.getJSONObject("data");
+                        Gson gson = new Gson();
+                        ImageBase64Model model = gson.fromJson(jsonObject.toString(),
+                                ImageBase64Model.class);
 //                    image = response.getString("image_base64");
 //                    Log.d("image:  ", image + "55555555555555555");
-                    mOnAdapterClick.myClick(model.getImage_base64());
+                        mOnAdapterClick.myClick(model.getImage_base64());
 //                    String image=model.getInstance_info().getBasic_info().get(0).getImage_base64();
 //
 //                    writeToFile(model.getImage_base64(),context);
 //                    Log.d("Tamam",model.getInstance_info().getBasic_info().get(0).getImage_base64().toString());
 
-                } catch (JSONException e) {
+                    } catch (JSONException e) {
 
-                    e.printStackTrace();
-                }finally {
-                    mInterfacePatient.showLoading(false);
+                        e.printStackTrace();
+                    } finally {
+                        loader.showLoading(false);
+                    }
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Controller.view_error(error,context);
-                mInterfacePatient.showLoading(false);
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Controller.view_error(error, context);
+                    loader.showLoading(false);
 
-            }
-        });
+                }
+            });
 
-        Controller.getInstance().addToRequestQueue(jsonOblect);
-        jsonOblect.setRetryPolicy(new DefaultRetryPolicy(
-                60000,
-                3,
-                3));
-    } catch (JSONException e) {
-        e.printStackTrace();
+            Controller.getInstance().addToRequestQueue(jsonOblect);
+            jsonOblect.setRetryPolicy(new DefaultRetryPolicy(
+                    60000,
+                    3,
+                    3));
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
 
     }
-
-}
 
     @Override
     public int getItemCount() {
@@ -244,5 +244,9 @@ public class RadViewrAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             this.imglink = (ImageButton) itemView.findViewById(R.id.imglink);
             this.ohiv_link = (ImageButton) itemView.findViewById(R.id.ohiv_link);
         }
+    }
+
+    public interface Loader {
+        void showLoading(boolean b);
     }
 }

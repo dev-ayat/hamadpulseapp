@@ -152,8 +152,10 @@ public class newVitalSignsFragment extends Fragment {
                                             ,v_s[0]+"\n"+v_s[1]);
 
                                 } else if(column==0) {
-                                    if(VitalArray.get(row).getDIFF_MIN()<5)
-                                    ShowDeleteMsg(VitalArray.get(row));
+                                    if (VitalArray.get(row).getDIFF_MIN() < 5) {
+                                        ShowDeleteMsg(VitalArray.get(row));
+                                    }
+
                                 }
                             }
                         });
@@ -163,15 +165,16 @@ public class newVitalSignsFragment extends Fragment {
                         mgetVitalForAdm.setVADMDATE("Date");
                         mgetVitalForAdm.setVITAL_NOTE("Note");
                         mgetVitalForAdm.setTEMPC("TEMP-C");
-                        mgetVitalForAdm.setSAO2("SaO2%");
+                        mgetVitalForAdm.setSAO2("O2sat%");
                         mgetVitalForAdm.setRRMIN("RR/min");
-                        mgetVitalForAdm.setEtCO2("EtCO2 mmHg");
+                        //    mgetVitalForAdm.setEtCO2("EtCO2 mmHg");
                         mgetVitalForAdm.setHeartRate("Heart Rate");
                         mgetVitalForAdm.setNIBP("NIBP_H");
                         mgetVitalForAdm.setNIBP_LOWER("NIBP_L");
                         mgetVitalForAdm.setUrineOut("Urine Out ml/hr");
-                        mgetVitalForAdm.setCVP("CVP cmH2O");
-                        mgetVitalForAdm.setIBP("IBP mmHg");
+                        mgetVitalForAdm.setSTOOL("STOOL");
+                        //  mgetVitalForAdm.setCVP("CVP cmH2O");
+                        // mgetVitalForAdm.setIBP("IBP mmHg");
                         mgetVitalForAdm.setWEIGHT("WEIGHT");
                         mgetVitalForAdm.setHEIGHT("HEIGHT");
                         mgetVitalForAdm.setBMI("BMI");

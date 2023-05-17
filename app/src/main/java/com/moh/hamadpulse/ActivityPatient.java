@@ -37,6 +37,7 @@ import com.moh.hamadpulse.fragment.AddTreatmentPlanFragment;
 import com.moh.hamadpulse.fragment.AddVentelationFragment;
 import com.moh.hamadpulse.fragment.AllargiesFragment;
 import com.moh.hamadpulse.fragment.DischargeFragment;
+import com.moh.hamadpulse.fragment.DoctorFragment;
 import com.moh.hamadpulse.fragment.DoctorNurseNoteFragment;
 import com.moh.hamadpulse.fragment.EfilePhotoCopingFragment;
 import com.moh.hamadpulse.fragment.Efile_Fragment;
@@ -253,7 +254,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
 //                mListPatientServices.add(new PatientServices(new VanteliationFragment(this), null, "Ventilation", R.drawable.ventilator));
                 mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
 ///                mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
-                mListPatientServices.add(new PatientServices(new DoctorNurseNoteFragment(), null, "Doctor orders", R.drawable.prescription));
+                mListPatientServices.add(new PatientServices(new DoctorFragment(), null, "Doctor orders & notes", R.drawable.prescription));
 
                 String pathologyurl = "http://apps.moh.gov.ps/pathology/path_sys/index.php/login/get";
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pathologyurl));
@@ -281,7 +282,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
             mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiation", R.drawable.x_ray_c));
             mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
             mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
-            mListPatientServices.add(new PatientServices(new DoctorNurseNoteFragment(), null, "Doctor orders", R.drawable.prescription));
+            mListPatientServices.add(new PatientServices(new DoctorFragment(), null, "Doctor orders & notes", R.drawable.prescription));
 //            mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
             mListPatientServices.add(new PatientServices(new NurseServicesFragment(), null, "Nursing procedures", R.drawable.nurses));
 //            mListPatientServices.add(new PatientServices(new FragmentCoronaHistory(), null, "Corona Tests", R.drawable.bacteria));

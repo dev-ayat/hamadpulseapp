@@ -61,10 +61,10 @@ public class Controller extends Application {
 
     public static String ROOT_PDF = "http://apps.moh.gov.ps/newwebarch/index.php/Androidhos_api/";
     public static String ROOT_RAD = "http://pulse.moh.gov.ps/newehos/index.php/RadViewer/api_mobile";
-    public static String ROOT_RAD_python = "http://pacs.moh.gov.ps" + ":1103/api";
+    public static String ROOT_RAD_python = "http://Pacs.hamad.ps" + ":1103/api";
     public static String ROOT_RAD_python_img = "http://Pacs.hamad.ps" + ":1103/api_img";
-    //public static String ROOT_RAD_python = "http://192.168.2.6" + ":1103/api";  // hamad
-    //  public static String ROOT_RAD_python_img = "http://192.168.2.6" + ":1103/api_img"; // hamad
+    //   public static String ROOT_RAD_python = "http://192.168.2.6" + ":1103/api";  // hamad
+    //   public static String ROOT_RAD_python_img = "http://192.168.2.6" + ":1103/'api_img"; // hamad
 
 
     public static String ROOT_RAD_base46 = "http://10.20.77.21/newehos/index.php/RadViewerNew/api_mobile";
@@ -218,6 +218,9 @@ public class Controller extends Application {
     public static String GET_PATIENT_ADM_HIS_URL = ROOT + "GET_PATIENT_ADM_HIS";
     public static String DELETE_INP_DIABETIC_CHART_URL = ROOT + "DELETE_INP_DIABETIC_CHART";
     public static String GET_PH_EXAM_DOC_URL = ROOT + "GET_PH_EXAM_DOC";
+
+    public static String INSERT_DOC_ORDERS_URL = ROOT + "INSERT_DOC_ORDERS";
+    public static String GET_DOC_ORDERS_URL = ROOT + "GET_DOC_ORDERS";
 
 
     public static DialogLoding LOADER_DIALOG = null;
