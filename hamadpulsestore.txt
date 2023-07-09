@@ -1,0 +1,5 @@
+key=  hamadpulsestore
+password = hamadstore
+
+elias user=  hamadstore
+password= hamadstore
