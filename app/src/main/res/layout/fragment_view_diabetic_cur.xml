@@ -1,43 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:clickable="true"
-    tools:context=".fragment.ViewDiabeticCur">
-    <include
-        android:id="@+id/inOut_header"
-        layout="@layout/row_header_diabetic_cur"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/RV_In_Out" />
+    android:background="#fcfcfc"
+    android:gravity="center">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RV_In_Out"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:listitem="@layout/row_diabetic_cur"
-        app:layout_constraintTop_toBottomOf="@id/inOut_header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/diabetic_master_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/sliding_master_row" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/emptyreslab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/labimg"
+            android:layout_width="match_parent"
+            android:layout_height="319dp"
+            android:src="@drawable/testphoto" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="15sp"
+            android:text="لا يوجد طلبات مخبرية للمريض"
+            android:textColor="#d9000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbtn_add_diabetic_cur"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|right"
         android:layout_margin="10dp"
-        android:clickable="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="345dp"
+        android:layout_marginBottom="10dp"
         android:alpha=".4"
+        android:clickable="true"
         android:src="@android:drawable/ic_menu_add"
         app:backgroundTint="@color/colorAccent"
         app:tint="@color/colorIcons" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

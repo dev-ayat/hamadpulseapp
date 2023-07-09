@@ -72,12 +72,26 @@ public class RadCurModel {
     private String orderdResultFinal;
     @SerializedName("ORDER_NOTES")
     private String orderNotes;
+
+    @SerializedName("SERVICE_NAME_EN")
+    @Expose
+    private String SERVICE_NAME_EN;
+
+    public String getSERVICE_NAME_EN() {
+        return SERVICE_NAME_EN;
+    }
+
     @SerializedName("RAD_IS_NIGHT")
     @Expose
     private String radIsNight;
     @SerializedName("PATEINT_AGE")
     @Expose
     private String pateintAge;
+
+    public void setSERVICE_NAME_EN(String SERVICE_NAME_EN) {
+        this.SERVICE_NAME_EN = SERVICE_NAME_EN;
+    }
+
 
     public String getOrderCode() {
         return orderCode;

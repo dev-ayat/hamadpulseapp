@@ -50,7 +50,7 @@ public class AdapterRadRes extends RecyclerView.Adapter<AdapterRadRes.RadResView
         item.setOrderStatusTypeNameAr(item.getOrderStatusTypeNameAr().
                 replace(" ", "\n"));
         holder.txt_Date.setText(item.getOrderDate().trim());
-        holder.txt_photo_type.setText(item.getServiceNameAr().trim());
+        holder.txt_photo_type.setText(item.getSERVICE_NAME_EN());
         holder.txt_photo_status.setText(item.getOrderStatusTypeNameAr().trim());
         Log.d("flag",item.getOrderStatusCd());
         ImageButton btn = holder.btn_view_report;

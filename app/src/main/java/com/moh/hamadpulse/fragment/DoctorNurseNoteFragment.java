@@ -123,7 +123,7 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
         Map<String, String> map = new HashMap<>();
         map.put("PATRIC_CD", patid);
         map.put("ADM_CD", patadmcd);
-        map.put("NOTE_TYPE ", type + "");
+        map.put("NOTE_TYPE", "" + type);
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "2");
@@ -131,6 +131,8 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
         map.put("TRANS_DESCRIPTION_IN", "عرض الملاحطات");
         map.put("HOS_NO", ((ActivityPatient) getActivity()).getmCardviewDataModel().getHOS_NO() + "");
+        Log.e("map", map.toString());
+
         mInterfacePatient.showLoading(true);
         CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.GET_NOTE_FOR_PATIENT_URL, map, new Response.Listener<JSONObject>() {
             @Override
@@ -138,7 +140,7 @@ public class DoctorNurseNoteFragment extends Fragment implements DoctorNurseNote
                 Log.e("response", response.toString());
                 try {
                     Log.e("response2", response.toString());
-                    JSONArray jsonArray = response.getJSONArray("ADM_NOTE");
+                    JSONArray jsonArray = response.getJSONArray("NOTE_CUR");
                     Log.e("jsonarray", "ayat" + jsonArray.toString());
                     if (jsonArray.length() > 0) {
                         Gson gson = new Gson();

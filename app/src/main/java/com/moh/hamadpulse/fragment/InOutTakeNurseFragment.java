@@ -38,9 +38,10 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  */
 public class InOutTakeNurseFragment extends DialogFragment {
-    String Iv_Fluid, Oral, Drains, Ngt, Vomiting, Urine, Chest_Tube_Left, Chest_Tube_Right;
+    String Iv_Fluid, Oral, Drains, Ngt, Vomiting, Urine, Chest_Tube_Left, Chest_Tube_Right, Vol, Started, Finished, Gastro, Residual;
     TextInputLayout txti_Iv_Fluid, txti_Oral, txti_Drains, txti_Ngt, txti_Vomiting,
-            txti_Urine, txti_Chest_Tube_Left, txti_Chest_Tube_Right,txti_in_out_note;
+            txti_Urine, txti_Chest_Tube_Left, txti_Chest_Tube_Right, txti_in_out_note,
+            txti_vol, txti_started, txti_finished, txti_gastro, txti_residual;
     FloatingActionButton btn_add_TakeInOut;
     LinearLayout containerVitalSign;
     Spinner Sp_in_take;
@@ -76,31 +77,48 @@ public class InOutTakeNurseFragment extends DialogFragment {
         setListenerForInputTextLayout(txti_Iv_Fluid);
         txti_Oral = view.findViewById(R.id.txti_Oral);
         setListenerForInputTextLayout(txti_Oral);
-        txti_Drains = view.findViewById(R.id.txti_in_out_drains);
-        setListenerForInputTextLayout(txti_Drains);
+//        txti_Drains = view.findViewById(R.id.txti_in_out_drains);
+//        setListenerForInputTextLayout(txti_Drains);
         txti_Ngt = view.findViewById(R.id.txti_NGT);
         setListenerForInputTextLayout(txti_Ngt);
         txti_Vomiting = view.findViewById(R.id.txti_vomitting);
         setListenerForInputTextLayout(txti_Vomiting);
         txti_Urine = view.findViewById(R.id.txti_urine);
         setListenerForInputTextLayout(txti_Urine);
-        txti_Chest_Tube_Left = view.findViewById(R.id.txti_chestl);
-        setListenerForInputTextLayout(txti_Chest_Tube_Left);
-        txti_Chest_Tube_Right = view.findViewById(R.id.txti_chestR);
-        setListenerForInputTextLayout(txti_Chest_Tube_Right);
+//        txti_Chest_Tube_Left = view.findViewById(R.id.txti_chestl);
+//        setListenerForInputTextLayout(txti_Chest_Tube_Left);
+//        txti_Chest_Tube_Right = view.findViewById(R.id.txti_chestR);
+//        setListenerForInputTextLayout(txti_Chest_Tube_Right);
         txti_in_out_note = view.findViewById(R.id.txti_in_out_note);
+        txti_vol = view.findViewById(R.id.txti_vol);
+        setListenerForInputTextLayout(txti_vol);
+//        txti_started = view.findViewById(R.id.txti_started);
+//        setListenerForInputTextLayout(txti_started);
+//        txti_finished = view.findViewById(R.id.txti_finished);
+//        setListenerForInputTextLayout(txti_finished);
+        txti_gastro = view.findViewById(R.id.txti_gastro);
+        setListenerForInputTextLayout(txti_gastro);
+        txti_residual = view.findViewById(R.id.txti_residual);
+        setListenerForInputTextLayout(txti_residual);
+
         btn_add_TakeInOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Iv_Fluid = txti_Iv_Fluid.getEditText().getText().toString().trim();
                 Oral = txti_Oral.getEditText().getText().toString().trim();
-                Drains = txti_Drains.getEditText().getText().toString().trim();
+//                Drains = txti_Drains.getEditText().getText().toString().trim();
                 Ngt = txti_Ngt.getEditText().getText().toString().trim();
                 Vomiting = txti_Vomiting.getEditText().getText().toString().trim();
                 Urine = txti_Urine.getEditText().getText().toString().trim();
-                Chest_Tube_Left = txti_Chest_Tube_Left.getEditText().getText().toString().trim();
-                Chest_Tube_Right = txti_Chest_Tube_Right.getEditText().getText().toString().trim();
+//             Chest_Tube_Left = txti_Chest_Tube_Left.getEditText().getText().toString().trim();
+
+                Vol = txti_vol.getEditText().getText().toString().trim();
+//                Started = txti_started.getEditText().getText().toString().trim();
+//                Finished = txti_finished.getEditText().getText().toString().trim();
+                Gastro = txti_gastro.getEditText().getText().toString().trim();
+                Residual = txti_residual.getEditText().getText().toString().trim();
+
                 if (validation()) {
                     AddTakeInOutForPatient();
                 }
@@ -156,13 +174,18 @@ public class InOutTakeNurseFragment extends DialogFragment {
 //        map.put("P_INP_IN_OUT_ADM_CD", 412565+"");
         map.put("P_INP_IN_OUT_IV_FLUID", Iv_Fluid);
         map.put("P_INP_IN_OUT_ORAL", Oral);
-        map.put("P_INP_IN_OUT_DRAINS", Drains);
+//        map.put("P_INP_IN_OUT_DRAINS", Drains);
         map.put("P_INP_IN_OUT_NGT", Ngt);
         map.put("P_INP_IN_OUT_VOMTTING", Vomiting);
         map.put("P_INP_IN_OUT_URINE", Urine);
-        map.put("P_INP_IN_OUT_CH_R", Chest_Tube_Right);
-        map.put("P_INP_IN_OUT_CH_L", Chest_Tube_Left);
+//        map.put("P_INP_IN_OUT_CH_R", Chest_Tube_Right);
+//        map.put("P_INP_IN_OUT_CH_L", Chest_Tube_Left);
         map.put("P_IN_OUT_NOTE", txti_in_out_note.getEditText().getText().toString().trim());
+        map.put("P_INP_IN_OUT_VOL", Vol);
+//        map.put("P_INP_IN_OUT_STARTED", Started);
+//        map.put("P_INP_IN_OUT_FINISHED", Finished);
+        map.put("P_INP_IN_OUT_GASTRO", Gastro);
+        map.put("P_INP_IN_OUT_RESIDUAL", Residual);
         map.put("P_INP_IN_OUT_CREATED_BY", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_SCREEN_CD_IN", 35 + "");
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
@@ -170,6 +193,7 @@ public class InOutTakeNurseFragment extends DialogFragment {
         map.put("TRANS_DOCUMENT_CD_IN", ((ActivityPatient) getActivity()).getmCardviewDataModel().getAdmcd() + "");
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
         map.put("TRANS_DESCRIPTION_IN", "insert take in out");
+        Log.e("ERRORinout", "" + map.toString());
 
 
         CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.INSERT_IN_OUT_TAKE_URL, map,

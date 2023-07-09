@@ -87,10 +87,14 @@ public class GetRadOrderForAdm {
     @SerializedName("ORGAN_NAME_EN")
     @Expose
     private String oRGANNAMEEN;
+
     @SerializedName("ORDERD_CODE")
     @Expose
     private String oRDERDCODE;
 
+    @SerializedName("LOOKUP_DETAILS")
+    @Expose
+    private String LOOKUP_DETAILS;
     private String EMP_FIRST_NAME_AR;
     private String EMP_FATHER_NAME_AR;
     private String EMP_GRANDFATHER_NAME_AR;
@@ -144,7 +148,7 @@ public class GetRadOrderForAdm {
                              String oRGANDCODE, String oRGANDNAMEAR, String oRGANDNAMEEN,
                              String oRGANCD, String sERVICECODE, String sERVICENAMEAR,
                              String sERVICENAMEEN, String cRADPOSITIONCODE, String cRADPOSITIONNAMEEN,
-                             String oRGANCODE, String oRGANNAMEAR, String oRGANNAMEEN, String oRDERDCODE) {
+                             String oRGANCODE, String oRGANNAMEAR, String oRGANNAMEEN, String oRDERDCODE, String LOOKUP_DETAILS) {
         super();
         this.oRDERCODE = oRDERCODE;
         this.oRDERDATE = oRDERDATE;
@@ -174,6 +178,7 @@ public class GetRadOrderForAdm {
         this.oRGANNAMEAR = oRGANNAMEAR;
         this.oRGANNAMEEN = oRGANNAMEEN;
         this.oRDERDCODE = oRDERDCODE;
+        this.LOOKUP_DETAILS = LOOKUP_DETAILS;
     }
 
     public String getORDERCODE() {
@@ -463,4 +468,14 @@ public class GetRadOrderForAdm {
     public void setORDERD_ORGAN_NOTE(String ORDERD_ORGAN_NOTE) {
         this.ORDERD_ORGAN_NOTE = ORDERD_ORGAN_NOTE;
     }
+
+
+    public String getLOOKUP_DETAILS() {
+        return LOOKUP_DETAILS;
+    }
+
+    public void setLOOKUP_DETAILS(String LOOKUP_DETAILS) {
+        this.LOOKUP_DETAILS = LOOKUP_DETAILS;
+    }
+
 }

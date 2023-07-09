@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#fcfcfc"
     android:gravity="center"
     android:tag="labres_fragment">
@@ -15,7 +16,8 @@
             android:id="@+id/laborder_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            tools:listitem="@layout/lab_order_cardview" />
 
 
     </LinearLayout>

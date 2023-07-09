@@ -37,6 +37,7 @@ public class DoctorNurseNoteAdapter extends RecyclerView.Adapter<DoctorNurseNote
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.doctor_nurse_row, parent, false);
         ViewHolder myViewHolder = new ViewHolder(view);
+
         return myViewHolder;
     }
 
@@ -73,6 +74,8 @@ public class DoctorNurseNoteAdapter extends RecyclerView.Adapter<DoctorNurseNote
 
     @Override
     public int getItemCount() {
+
+
         return admPatientNotesArray.size();
 
     }

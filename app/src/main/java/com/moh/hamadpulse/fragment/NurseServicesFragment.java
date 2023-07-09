@@ -19,7 +19,7 @@ import com.moh.hamadpulse.R;
 
 public class NurseServicesFragment extends Fragment implements View.OnClickListener {
     TextView lblscname, lbordername;
-    CardView CV_in_out_take, CV_Diabetic, CV_Changing_Position, CV_V_Sighn_Notes, CV_View_O2, CV_nursenote;
+    CardView CV_in_out_take, CV_Diabetic, CV_Changing_Position, CV_V_Sighn_Notes, CV_View_O2, CV_nursenote, CV_bladder_training;
 
     public NurseServicesFragment() {
 
@@ -38,22 +38,24 @@ public class NurseServicesFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         CV_in_out_take = view.findViewById(R.id.CV_in_out_take);
-        // CV_Diabetic = view.findViewById(R.id.CV_Diabetic);
-        // CV_Changing_Position = view.findViewById(R.id.CV_Changing_Position);
+        CV_Diabetic = view.findViewById(R.id.CV_Diabetic);
+        CV_Changing_Position = view.findViewById(R.id.CV_Changing_Position);
+        CV_bladder_training = view.findViewById(R.id.CV_bladder_training);
         CV_V_Sighn_Notes = view.findViewById(R.id.CV_V_sighn);
         // CV_View_O2 = view.findViewById(R.id.CV_View_O2);
         CV_nursenote = view.findViewById(R.id.CV_nursenote);
         if (!Controller.ORDER_DEP_CD.equals("2")) {
             CV_in_out_take.setOnClickListener(this);
-            //   CV_Diabetic.setOnClickListener(this);
-            //   CV_Changing_Position.setOnClickListener(this);
+            CV_Diabetic.setOnClickListener(this);
+            CV_Changing_Position.setOnClickListener(this);
             CV_V_Sighn_Notes.setOnClickListener(this);
             //   CV_View_O2.setOnClickListener(this);
             CV_nursenote.setOnClickListener(this);
+            CV_bladder_training.setOnClickListener(this);
+
         } else {
             CV_V_Sighn_Notes.setOnClickListener(this);
             CV_nursenote.setOnClickListener(this);
-
             CV_in_out_take.setVisibility(View.GONE);
             //  CV_Diabetic.setVisibility(View.GONE);
             //  CV_Changing_Position.setVisibility(View.GONE);
@@ -90,13 +92,17 @@ public class NurseServicesFragment extends Fragment implements View.OnClickListe
                 ((ActivityPatient) getActivity()).CallFragment(new DoctorNurseNoteFragment(mInterfacePatient, 2));
                 break;
             // Diabetic
-           /* case R.id.CV_Diabetic:
+            case R.id.CV_Diabetic:
                 ((ActivityPatient) getActivity()).CallFragment(new ViewDiabeticCur());
-                break;*/
-          /*  case R.id.CV_Changing_Position:
+                // ((ActivityPatient) getActivity()).CallFragment(new SlidinfView_fragment());
+                break;
+            case R.id.CV_Changing_Position:
                 ((ActivityPatient) getActivity()).CallFragment(new View_Change_Position());
-                break;*/
+                break;
             case R.id.CV_V_sighn:
+                ((ActivityPatient) getActivity()).CallFragment(new newVitalSignsFragment((ActivityPatient) getActivity()));
+                break;
+            case R.id.CV_bladder_training:
                 ((ActivityPatient) getActivity()).CallFragment(new newVitalSignsFragment((ActivityPatient) getActivity()));
                 break;
           /*  case R.id.CV_View_O2:

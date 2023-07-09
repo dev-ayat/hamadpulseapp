@@ -259,8 +259,8 @@ public class newradresFragment extends Fragment implements OnAdapterClick, com.m
             String URL = "";
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("EmpID", (Controller.pref.getString("USER_ID", "")));
-            jsonBody.put("PatientID", flag ? txt_PID.getText().toString().trim() :
-                    ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
+            //jsonBody.put("PatientID", flag ? txt_PID.getText().toString().trim() :
+            // ((ActivityPatient) getActivity()).getmCardviewDataModel().getPtmrpid() + "");
             jsonBody.put("PatientID", "802331306"); // hamad
 
             jsonBody.put("Modality", "*");

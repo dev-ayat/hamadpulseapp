@@ -52,13 +52,14 @@ public class RadOrderAdapter extends RecyclerView.Adapter<RadOrderAdapter.ViewHo
         fullName += " " + PatientRad.getEMP_LAST_NAME_AR();
         Log.e("test", PatientRad.getORDERCODE());
         holder.txtdate.setText(PatientRad.getORDERCREATEDON());
-        holder.txtradservice.setText(PatientRad.getSERVICENAMEAR());
+        holder.txtradservice.setText(PatientRad.getSERVICENAMEEN());
         holder.txtmasterorgin.setText(PatientRad.getORGANNAMEAR());
         holder.txtdetailsorgan.setText(PatientRad.getORGANDNAMEAR());
         holder.txtposition.setText(PatientRad.getCRADPOSITIONNAMEEN());
         holder.txtRadserial.setText(PatientRad.getORDERCODE());
         holder.txtradDorder.setText(PatientRad.getoRDERDCODE());
         holder.txtreson.setText(PatientRad.getORDERD_ORGAN_NOTE());
+        holder.txtprecautions.setText(PatientRad.getLOOKUP_DETAILS());
         holder.radDocName.setText(fullName);
         holder.delete_img_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,9 +91,10 @@ public class RadOrderAdapter extends RecyclerView.Adapter<RadOrderAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtdate, txtradservice, txtmasterorgin, txtdetailsorgan, txtposition, txtRadserial, txtreson, txtradDorder,radDocName;
+        TextView txtdate, txtradservice, txtmasterorgin, txtdetailsorgan, txtposition, txtRadserial, txtreson, txtradDorder, radDocName, txtprecautions;
         LinearLayout rowFG;
         ImageButton delete_img_btn;
+
         public ViewHolder(View itemView) {
             super(itemView);
             txtdate = itemView.findViewById(R.id.txtdate);
@@ -106,6 +108,7 @@ public class RadOrderAdapter extends RecyclerView.Adapter<RadOrderAdapter.ViewHo
             radDocName = itemView.findViewById(R.id.radDocName);
             rowFG = itemView.findViewById(R.id.rowFG);
             delete_img_btn = itemView.findViewById(R.id.delete_img_btn);
+            txtprecautions = itemView.findViewById(R.id.txtprecautions);
 
         }
     }

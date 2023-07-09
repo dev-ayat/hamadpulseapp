@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical"
-                    tools:listitem="@layout/doctor_nurse_row" />
+                    tools:listitem="@layout/doctor_order_row" />
             </ScrollView>
         </LinearLayout>
 

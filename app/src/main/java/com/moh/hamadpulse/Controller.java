@@ -52,19 +52,19 @@ public class Controller extends Application {
 
     // google play root pulse
 
-    // public static String ROOT = "http://pulse.hamad.ps/ehosapi/index.php/Android_api/";
+    //public static String ROOT = "http://pulse.hamad.ps/ehosapi/index.php/Android_api/";
     public static String ROOT = "http://10.20.28.208/ehosapi/index.php/Android_api/";
-    //  public static String ROOT = "http://192.168.2.32/ehosapi/index.php/Android_api/";
+    // public static String ROOT = "http://192.168.2.32/ehosapi/index.php/Android_api/";
 
     //Turky
 //    public static String ROOT = "http://10.30.60.20/newehosapi/index.php/Android_api/";
 
     public static String ROOT_PDF = "http://apps.moh.gov.ps/newwebarch/index.php/Androidhos_api/";
     public static String ROOT_RAD = "http://pulse.moh.gov.ps/newehos/index.php/RadViewer/api_mobile";
-    public static String ROOT_RAD_python = "http://Pacs.hamad.ps" + ":1103/api";
-    public static String ROOT_RAD_python_img = "http://Pacs.hamad.ps" + ":1103/api_img";
-    //   public static String ROOT_RAD_python = "http://192.168.2.6" + ":1103/api";  // hamad
-    //   public static String ROOT_RAD_python_img = "http://192.168.2.6" + ":1103/'api_img"; // hamad
+    //   public static String ROOT_RAD_python = "http://Pacs.hamad.ps" + ":1103/api";
+    //  public static String ROOT_RAD_python_img = "http://Pacs.hamad.ps" + ":1103/api_img";
+    public static String ROOT_RAD_python = "http://192.168.2.6" + ":1103/api";  // hamad
+    public static String ROOT_RAD_python_img = "http://192.168.2.6" + ":1103/api_img"; // hamad
 
 
     public static String ROOT_RAD_base46 = "http://10.20.77.21/newehos/index.php/RadViewerNew/api_mobile";
@@ -221,6 +221,11 @@ public class Controller extends Application {
 
     public static String INSERT_DOC_ORDERS_URL = ROOT + "INSERT_DOC_ORDERS";
     public static String GET_DOC_ORDERS_URL = ROOT + "GET_DOC_ORDERS";
+    public static String DELETE_DOCTOR_ORDER_URL = ROOT + "DELETE_DOCTOR_ORDER";
+    public static String GET_RAD_ORGAN_NOTES_URL = ROOT + "GET_ORGAN_NOTE";
+    public static String get_rad_Precutions_URL = ROOT + "get_rad_Precutions";
+
+    public static String GET_DIABETIC_ORDERS_URL = ROOT + "GET_DIABETIC_ORDERS";
 
 
     public static DialogLoding LOADER_DIALOG = null;

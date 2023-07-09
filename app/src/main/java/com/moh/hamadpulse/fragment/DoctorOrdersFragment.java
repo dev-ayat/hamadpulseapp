@@ -30,9 +30,9 @@ import com.moh.hamadpulse.ActivityPatient;
 import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.InterfacePatient;
 import com.moh.hamadpulse.R;
-import com.moh.hamadpulse.adapters.DoctorNurseNoteAdapter;
+import com.moh.hamadpulse.adapters.DoctorOrdersAdapter;
 import com.moh.hamadpulse.constants.CustomRequest;
-import com.moh.hamadpulse.models.GetNoteForPatient;
+import com.moh.hamadpulse.models.GetDoctorsOrders;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,16 +47,16 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAdapter.NoteInterface {
+public class DoctorOrdersFragment extends Fragment implements DoctorOrdersAdapter.NoteInterface {
 
     FloatingActionButton add_note;
     TextView txtpatid, txtpatName, txtadmdate, txtdaycount;
     String patid, patadmcd, user_id;
-    ArrayList<GetNoteForPatient> patientNoteArray;
-    DoctorNurseNoteAdapter doctorNurseNoteAdapter;
+    ArrayList<GetDoctorsOrders> patientNoteArray;
+    DoctorOrdersAdapter doctorOrdersAdapter;
     RecyclerView note_recycler_view;
     LinearLayout statusresult, emptyresult, statuslblresult;
-    String fragment_cd = "31";
+    String fragment_cd = "50";
     InterfacePatient mInterfacePatient;
 
     public DoctorOrdersFragment() {
@@ -77,12 +77,8 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_doctor_nurse_note, container, false);
+        View view = inflater.inflate(R.layout.fragment_doctor_orders, container, false);
         add_note = view.findViewById(R.id.btn_add_note);
-        txtpatName = view.findViewById(R.id.txtpatName);
-        txtpatid = view.findViewById(R.id.txtpatid);
-        txtadmdate = view.findViewById(R.id.txtadmdate);
-        txtdaycount = view.findViewById(R.id.txtdaycount);
         statusresult = view.findViewById(R.id.Statusresult_linearLayout);
         emptyresult = view.findViewById(R.id.emptyresult_linearLayout);
         note_recycler_view = view.findViewById(R.id.note_recycler_view);
@@ -107,33 +103,32 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
         patid = ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "";
         patadmcd = ((ActivityPatient) getActivity()).getmCardviewDataModel().getAdmcd() + "";
         user_id = Controller.pref.getString("USER_ID", "");
-        PrepareGetpatientNote();
+        PrepareGetpatientorders();
     }
 
 
-    public void PrepareGetpatientNote() {
+    public void PrepareGetpatientorders() {
         Map<String, String> map = new HashMap<>();
-        map.put("PATRIC_CD", patid);
-        map.put("ADM_CD", patadmcd);
+        map.put("P_ADM_CD", patadmcd);
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "2");
         map.put("TRANS_DOCUMENT_CD_IN", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "");
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
-        map.put("TRANS_DESCRIPTION_IN", "عرض الملاحطات");
+        map.put("TRANS_DESCRIPTION_IN", "عرض أوامر الطبيب");
         map.put("HOS_NO", ((ActivityPatient) getActivity()).getmCardviewDataModel().getHOS_NO() + "");
         //  mInterfacePatient.showLoading(true);
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.GET_NOTE_FOR_PATIENT_URL, map, new Response.Listener<JSONObject>() {
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.GET_DOC_ORDERS_URL, map, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response", response.toString());
                 try {
                     Log.e("response2", response.toString());
-                    JSONArray jsonArray = response.getJSONArray("ADM_NOTE");
+                    JSONArray jsonArray = response.getJSONArray("ORDERS_CUR");
                     Log.e("jsonarray", "ayat" + jsonArray.toString());
                     if (jsonArray.length() > 0) {
                         Gson gson = new Gson();
-                        Type type = new TypeToken<List<GetNoteForPatient>>() {
+                        Type type = new TypeToken<List<GetDoctorsOrders>>() {
                         }.getType();
                         patientNoteArray = gson.fromJson(jsonArray.toString(), type);
                         Log.e("list", patientNoteArray.toString());
@@ -180,17 +175,17 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
     }
 
     public void InitAadapter() {
-        doctorNurseNoteAdapter = new DoctorNurseNoteAdapter(getContext(), patientNoteArray, this);
-        note_recycler_view.setAdapter(doctorNurseNoteAdapter);
-        doctorNurseNoteAdapter.notifyDataSetChanged();
+        doctorOrdersAdapter = new DoctorOrdersAdapter(getContext(), patientNoteArray, this);
+        note_recycler_view.setAdapter(doctorOrdersAdapter);
+        doctorOrdersAdapter.notifyDataSetChanged();
     }
 
     public void ShowAddNotes() {
-        ((ActivityPatient) getActivity()).CallFragment(new AddDoctorNurseNoteFragment());
+        ((ActivityPatient) getActivity()).CallFragment(new AddDoctorOrdersFragment());
     }
 
     @Override
-    public void onNoteClick(GetNoteForPatient mGetNoteForPatient) {
+    public void onNoteClick(GetDoctorsOrders mGetDoctorsOrders) {
         //ShowDeleteMsg(serial);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
                 .setTitle(" هل تريد بالتأكيد الحذف ؟؟")
@@ -198,12 +193,8 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //Controller.LOADER_DIALOG.showDialog("جاري الحذف");
-                        sendDeletOrder(mGetNoteForPatient);
-//                        for (int i = 0; i < patientNoteArray.size(); i++)
-//                            if (patientNoteArray.get(i).getdOCNURSERIAL().equals(mGetNoteForPatient.getdOCNURSERIAL())) {
-//                                patientNoteArray.remove(i);
-//                                return;
-//                            }
+                        sendDeletOrder(mGetDoctorsOrders);
+
                     }
 
 
@@ -219,15 +210,18 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
     }
 
 
-    private void sendDeletOrder(GetNoteForPatient mGetNoteForPatient) {
+    private void sendDeletOrder(GetDoctorsOrders mGetDoctorsOrders) {
         Map<String, String> map = new HashMap<>();
-        map.put("PATRIC_CD", patid);
-        map.put("ADM_CD", patadmcd);
-        map.put("USER_ID", user_id);
-        map.put("SERIAL", mGetNoteForPatient.getdOCNURSERIAL());
+        map.put("P_ORDER_CD", mGetDoctorsOrders.getDocOrderCode());
+        map.put("TRANS_SCREEN_CD_IN", fragment_cd);
+        map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
+        map.put("TRANS_ACTION_CD_IN", "3");
+        map.put("TRANS_DOCUMENT_CD_IN", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "");
+        map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
+        map.put("TRANS_DESCRIPTION_IN", "حذف اوامر الطبيب");
         map.put("HOS_NO", ((ActivityPatient) getActivity()).getmCardviewDataModel().getHOS_NO() + "");
-        mInterfacePatient.showLoading(true);
-        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.Delete_NOTE_FOR_PATIENT_URL, map, new Response.Listener<JSONObject>() {
+        //  mInterfacePatient.showLoading(true);
+        CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, Controller.DELETE_DOCTOR_ORDER_URL, map, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("response:", response.toString());
@@ -235,13 +229,13 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
                     int res = response.getInt("P_RESULT");
                     if (res == 1) {
                         Toast.makeText(getContext(), "تم عملية الحذف بنجاح", Toast.LENGTH_SHORT).show();
-                        patientNoteArray.remove(mGetNoteForPatient);
-                        doctorNurseNoteAdapter.notifyDataSetChanged();
+                        patientNoteArray.remove(mGetDoctorsOrders);
+                        doctorOrdersAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(), "لم تتم عملية الحذف", Toast.LENGTH_SHORT).show();
 
                     }
-                    mInterfacePatient.showLoading(false);
+                    //  mInterfacePatient.showLoading(false);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -252,7 +246,7 @@ public class DoctorOrdersFragment extends Fragment implements DoctorNurseNoteAda
             @Override
             public void onErrorResponse(VolleyError error) {
                 Controller.view_error(error, getContext());
-                mInterfacePatient.showLoading(false);
+                //  mInterfacePatient.showLoading(false);
             }
         });
         jsObjRequest.setRetryPolicy(new RetryPolicy() {

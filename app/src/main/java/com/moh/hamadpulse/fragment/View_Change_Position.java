@@ -156,14 +156,18 @@ public class View_Change_Position extends Fragment {
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     Date date = new Date();
                     String date_ = formatter.format(date);
-                    Log.d("date",date_);
-                    Log.d("date",model.getInpChCreatedOn());
-                    Log.d("date",date_.compareTo(model.getInpChCreatedOn())+"");
+                    Log.d("date", date_);
+                    Log.d("date", model.getInpChCreatedOn());
+                    Log.d("date", date_.compareTo(model.getInpChCreatedOn()) + "");
 
-                    if (date_.compareTo(model.getInpChCreatedOn()) > 0)
+                    if (date_.compareTo(model.getInpChCreatedOn()) > 0) {
                         ((ActivityPatient) getActivity()).CallFragment(new Add_Changing_Position(null));
-                    else
+
+                    } else {
+                        Log.e("changing position", date_);
                         ((ActivityPatient) getActivity()).CallFragment(new Add_Changing_Position(model));
+                    }
+
                 } else {
                     ((ActivityPatient) getActivity()).CallFragment(new Add_Changing_Position(null));
                 }

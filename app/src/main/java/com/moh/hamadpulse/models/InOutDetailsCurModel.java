@@ -36,6 +36,62 @@ public class InOutDetailsCurModel {
     private String NOTE;
     @SerializedName("HOS_NO")
     private String hosNo;
+    @SerializedName("INP_IN_OUT_VOL")
+    private String INP_IN_OUT_VOL;
+
+    @SerializedName("INP_IN_OUT_STARTED")
+    private String INP_IN_OUT_STARTED;
+
+    @SerializedName("INP_IN_OUT_FINISHED")
+    private String INP_IN_OUT_FINISHED;
+
+    @SerializedName("INP_IN_OUT_GASTRO")
+    private String INP_IN_OUT_GASTRO;
+
+    @SerializedName("INP_IN_OUT_RESIDUAL")
+    private String INP_IN_OUT_RESIDUAL;
+
+
+    public String getINP_IN_OUT_VOL() {
+        return INP_IN_OUT_VOL;
+    }
+
+    public void setINP_IN_OUT_VOL(String INP_IN_OUT_VOL) {
+        this.INP_IN_OUT_VOL = INP_IN_OUT_VOL;
+    }
+
+    public String getINP_IN_OUT_STARTED() {
+        return INP_IN_OUT_STARTED;
+    }
+
+    public void setINP_IN_OUT_STARTED(String INP_IN_OUT_STARTED) {
+        this.INP_IN_OUT_STARTED = INP_IN_OUT_STARTED;
+    }
+
+    public String getINP_IN_OUT_FINISHED() {
+        return INP_IN_OUT_FINISHED;
+    }
+
+    public void setINP_IN_OUT_FINISHED(String INP_IN_OUT_FINISHED) {
+        this.INP_IN_OUT_FINISHED = INP_IN_OUT_FINISHED;
+    }
+
+    public String getINP_IN_OUT_GASTRO() {
+        return INP_IN_OUT_GASTRO;
+    }
+
+    public void setINP_IN_OUT_GASTRO(String INP_IN_OUT_GASTRO) {
+        this.INP_IN_OUT_GASTRO = INP_IN_OUT_GASTRO;
+    }
+
+    public String getINP_IN_OUT_RESIDUAL() {
+        return INP_IN_OUT_RESIDUAL;
+    }
+
+    public void setINP_IN_OUT_RESIDUAL(String INP_IN_OUT_RESIDUAL) {
+        this.INP_IN_OUT_RESIDUAL = INP_IN_OUT_RESIDUAL;
+    }
+
 
     public String getNOTE() {
         return NOTE;

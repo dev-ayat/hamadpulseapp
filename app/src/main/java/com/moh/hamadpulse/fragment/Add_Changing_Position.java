@@ -148,28 +148,28 @@ public class Add_Changing_Position extends Fragment {
     private void prepateArrayOfSetChangePosition() {
         setChangePositionModels = new ArrayList<>();
         setChangePositionModels.add(new SetChangePositionModel("Rt",
-                "8 Am", false));
+                " 8Am", false));
         setChangePositionModels.add(new SetChangePositionModel("Lt",
                 "10Am", false));
-        setChangePositionModels.add(new SetChangePositionModel("Back",
+        setChangePositionModels.add(new SetChangePositionModel("B",
                 "12MD", false));
         setChangePositionModels.add(new SetChangePositionModel("Rt",
                 "2 Pm", false));
         setChangePositionModels.add(new SetChangePositionModel("Lt",
                 "4 Pm", false));
-        setChangePositionModels.add(new SetChangePositionModel("Back",
+        setChangePositionModels.add(new SetChangePositionModel("B",
                 "6 Pm", false));
         setChangePositionModels.add(new SetChangePositionModel("Rt",
                 "8 Pm", false));
         setChangePositionModels.add(new SetChangePositionModel("Lt",
                 "10Pm", false));
-        setChangePositionModels.add(new SetChangePositionModel("Back",
+        setChangePositionModels.add(new SetChangePositionModel("B",
                 "12MN", false));
         setChangePositionModels.add(new SetChangePositionModel("Rt",
                 "2 Am", false));
         setChangePositionModels.add(new SetChangePositionModel("Lt",
                 "4 Am", false));
-        setChangePositionModels.add(new SetChangePositionModel("Back",
+        setChangePositionModels.add(new SetChangePositionModel("B",
                 "6 Am", false));
     }
 

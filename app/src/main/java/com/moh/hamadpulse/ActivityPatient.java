@@ -3,6 +3,7 @@ package com.moh.hamadpulse;
 import static com.moh.hamadpulse.constants.ConstShared.USER_TYPE;
 import static java.time.temporal.ChronoUnit.DAYS;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -173,19 +174,19 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
     public void get_new_p_serv() {
 
         Map<String, String> map = new HashMap<>();
-        map.put("P_PATREC_CD", (getmCardviewDataModel().getPatid() + ""));
-
-        map.put("P_ADM_CD", "412596");
+        map.put("P_PATRIC_CD", (getmCardviewDataModel().getPatid() + ""));
+        map.put("P_ADM_CD", (getmCardviewDataModel().getAdmcd() + ""));
         map.put("TRANS_SCREEN_CD_IN", "");
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "2");
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
         map.put("TRANS_DESCRIPTION_IN", "View New Patient Services");
+        Log.e("api", map.toString());
         MyRequest.makeRquest(getBaseContext(), Controller.GET_NEW_P_SERVICES_URL,
                 map, new MyRequest.CallBack() {
                     @Override
                     public void Result(String response) {
-
+                        Log.e("api", map.toString());
                         JSONObject mJSONObject = null;
                         try {
                             mJSONObject = new JSONObject(response);
@@ -235,24 +236,24 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
         mListPatientServices = new ArrayList<>();
         if (Controller.ORDER_DEP_CD.equals("3")) {
             if(Controller.pref.getString(USER_TYPE, "").equals("5")){
-                mListPatientServices.add(new PatientServices(new FragmentDailyProgressDashboard(this), null, "Daily Progress", R.drawable.schedule));
+                //     mListPatientServices.add(new PatientServices(new FragmentDailyProgressDashboard(this), null, "Daily Progress", R.drawable.schedule));
                 mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiology", R.drawable.x_ray_c));
                 mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
 
                 mListPatientServices.add(new PatientServices(new TreatmentPlanFragment(this), null, "الصيدلية"));
-                mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
+                //  mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
                 mListPatientServices.add(new PatientServices(new newVitalSignsFragment(this), null, "Vital Signs", R.drawable.vital_sigins_vector));
 
                 if (mCardviewDataModel.getHOS_NO().equals("2") || mCardviewDataModel.getHOS_NO().equals("18"))
                     mListPatientServices.add(new PatientServices(new ProtocolFragment(), null, "Protocol", R.drawable.health));
             }else {
-                mListPatientServices.add(new PatientServices(new FragmentDailyProgressDashboard(this), null, "Daily Progress", R.drawable.schedule));
+                //   mListPatientServices.add(new PatientServices(new FragmentDailyProgressDashboard(this), null, "Daily Progress", R.drawable.schedule));
 //                mListPatientServices.add(new PatientServices(new AdmissionDashboradFragment(), null, "Admission Request & \nPhysical Examination", R.drawable.ic_admandph));
                 mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiology", R.drawable.x_ray_c));
                 mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
 
 //                mListPatientServices.add(new PatientServices(new VanteliationFragment(this), null, "Ventilation", R.drawable.ventilator));
-                mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
+                //     mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
 ///                mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
                 mListPatientServices.add(new PatientServices(new DoctorFragment(), null, "Doctor orders & notes", R.drawable.prescription));
 
@@ -281,7 +282,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
         } else {
             mListPatientServices.add(new PatientServices(new RadFragment(), null, "Radiation", R.drawable.x_ray_c));
             mListPatientServices.add(new PatientServices(new LabFragment(), null, "Laboratory", R.drawable.flask));
-            mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
+            //   mListPatientServices.add(new PatientServices(new FragmentPharm(this), null, "Pharmacy", R.drawable.drugs));
             mListPatientServices.add(new PatientServices(new DoctorFragment(), null, "Doctor orders & notes", R.drawable.prescription));
 //            mListPatientServices.add(new PatientServices(new ArchiveServicesFragment(), null, "Electronic file", R.drawable.medical_history));
             mListPatientServices.add(new PatientServices(new NurseServicesFragment(), null, "Nursing procedures", R.drawable.nurses));
@@ -387,7 +388,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
             diagnoselayout.setVisibility(View.VISIBLE);
         }else
             diagnoselayout.setVisibility(View.GONE);
-        //   isPatietHaveAllergies();
+        isPatietHaveAllergies();
     }
 
     private void isPatietHaveAllergies() {
@@ -430,6 +431,7 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
         map.put("P_PATRIC_CD", mCardviewDataModel.getPatid() + "");
 //        map.put("P_PATRIC_CD", "120");
         MyRequest.makeRquest(getBaseContext(), Controller.GET_PATIENT_DIAGNOSE_URL, map, new MyRequest.CallBack() {
+            @SuppressLint("SuspiciousIndentation")
             @Override
             public void Result(String response) {
                 JSONObject mJSONObject = null;
@@ -447,11 +449,11 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
                         if(histologylayout.getVisibility()!=View.VISIBLE) {
                             txt_diagnosisNumber.setText(model.getCmIcdCode().isEmpty()?"":model.getCmIcdCode());
                             if(model.getCmIcdNameEn().isEmpty()){
-                                txt_diagnosisDisc.setText("التشخيص غير مدخل");
+                                txt_diagnosisDisc.setText("No Diagnose");
                                 txt_diagnosisDisc.setGravity(Gravity.CENTER);
                                 txt_diagnosisDisc.setTextColor(Color.RED);
                             }else
-                            txt_diagnosisDisc.setText(model.getCmIcdNameEn());
+                                txt_diagnosisDisc.setText(model.getCmIcdNameEn());
                         }else{
                             txtPrimarySiteNumber.setText(model.getTopologyId());
                             txtPrimarySiteDisc.setText(model.getCtIcdNameEn());
@@ -461,12 +463,16 @@ public class ActivityPatient extends AppCompatActivity implements /*View.OnClick
 
                     } else {
 
-                            txtPrimarySiteDisc.setText("التشخيص غير مدخل");
-                            txtPrimarySiteDisc.setGravity(Gravity.CENTER);
-                            txtPrimarySiteDisc.setTextColor(Color.RED);
-                            txtHistologyDisc.setText("التشخيص غير مدخل");
-                            txtHistologyDisc.setGravity(Gravity.CENTER);
-                            txtHistologyDisc.setTextColor(Color.RED);
+                        txtPrimarySiteDisc.setText("التشخيص غير مدخل");
+                        txtPrimarySiteDisc.setGravity(Gravity.CENTER);
+                        txtPrimarySiteDisc.setTextColor(Color.RED);
+                        txtHistologyDisc.setText("التشخيص غير مدخل");
+                        txtHistologyDisc.setGravity(Gravity.CENTER);
+                        txtHistologyDisc.setTextColor(Color.RED);
+
+                        txt_diagnosisDisc.setText("No Diagnose");
+                        txt_diagnosisDisc.setGravity(Gravity.CENTER);
+                        txt_diagnosisDisc.setTextColor(Color.RED);
 
 
                     }

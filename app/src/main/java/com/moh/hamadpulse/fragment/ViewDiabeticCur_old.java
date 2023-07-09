@@ -21,9 +21,7 @@ import com.moh.hamadpulse.Controller;
 import com.moh.hamadpulse.MyRequest;
 import com.moh.hamadpulse.R;
 import com.moh.hamadpulse.adapters.AdapterDiabeticCur;
-import com.moh.hamadpulse.adapters.AdapterDiabeticmasterCur;
 import com.moh.hamadpulse.models.DiabeticCurModel;
-import com.moh.hamadpulse.models.DiabeticMasterCurModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,17 +33,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ViewDiabeticCur extends Fragment {
+public class ViewDiabeticCur_old extends Fragment {
 
     RecyclerView diabetic_RecyclerView;
     AdapterDiabeticCur adapterDiabeticCur;
-    AdapterDiabeticmasterCur AdapterDiabeticmasterCur;
     ArrayList<DiabeticCurModel> diabeticCurModelArrayList;
-    ArrayList<DiabeticMasterCurModel> diabeticmastCurModelArray;
     FloatingActionButton btn_add_diabetic_cur;
     String fragment_cd = "37";
 
-    public ViewDiabeticCur() {
+    public ViewDiabeticCur_old() {
         // Required empty public constructor
     }
 
@@ -58,30 +54,26 @@ public class ViewDiabeticCur extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        diabetic_RecyclerView = view.findViewById(R.id.diabetic_master_rv);
+        diabetic_RecyclerView = view.findViewById(R.id.RV_In_Out);
         btn_add_diabetic_cur = view.findViewById(R.id.fbtn_add_diabetic_cur);
-
-        // diabeticCurModelArrayList = new ArrayList<>();
-        diabeticmastCurModelArray = new ArrayList<>();
-
-        //   adapterDiabeticCur = new AdapterDiabeticCur(diabeticCurModelArrayList);
-        AdapterDiabeticmasterCur = new AdapterDiabeticmasterCur(getContext(), diabeticmastCurModelArray);
-
+        diabeticCurModelArrayList = new ArrayList<>();
+        adapterDiabeticCur = new AdapterDiabeticCur(diabeticCurModelArrayList);
         diabetic_RecyclerView.setHasFixedSize(true);
-        diabetic_RecyclerView.setAdapter(AdapterDiabeticmasterCur);
+        diabetic_RecyclerView.setAdapter(adapterDiabeticCur);
         diabetic_RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
         Map<String, String> map = new HashMap<>();
         map.put("P_ADM_CD", ((ActivityPatient) getActivity()).getmCardviewDataModel().getAdmcd() + "");
         map.put("P_PATRIC_CD", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "");
+//        map.put("P_PATRIC_CD","191211");
+//        map.put("P_ADM_CD","412565");
         map.put("TRANS_SCREEN_CD_IN", fragment_cd);
         map.put("TRANS_USER_CODE_IN", (Controller.pref.getString("USER_ID", "")));
         map.put("TRANS_ACTION_CD_IN", "2");
         map.put("TRANS_DOCUMENT_CD_IN", ((ActivityPatient) getActivity()).getmCardviewDataModel().getPatid() + "");
+//        map.put("TRANS_DOCUMENT_CD_IN","191211");
         map.put("TRANS_IP_ADDRESS_IN", (Controller.pref.getString("IP_Address", "")));
         map.put("TRANS_DESCRIPTION_IN", "View DiabeticCur");
-        MyRequest.makeRquest(getContext(), Controller.GET_DIABETIC_ORDERS_URL,
+        MyRequest.makeRquest(getContext(), Controller.GET_INP_DIABETIC_CHART_URL,
                 map, new MyRequest.CallBack() {
                     @Override
                     public void Result(String response) {
@@ -89,17 +81,18 @@ public class ViewDiabeticCur extends Fragment {
                         JSONObject mJSONObject = null;
                         try {
                             mJSONObject = new JSONObject(response);
-                            JSONArray jsonArray = mJSONObject.getJSONArray("DIABETIC_ORDERS");
+                            JSONArray jsonArray = mJSONObject.getJSONArray("DIABETIC_CUR");
 
                             //////////////////
                             Gson gson = new Gson();
-                            Type type = new TypeToken<ArrayList<DiabeticMasterCurModel>>() {
+                            Type type = new TypeToken<ArrayList<DiabeticCurModel>>() {
                             }.getType();
-                            diabeticmastCurModelArray = gson.fromJson(jsonArray.toString(),
+                            diabeticCurModelArrayList = gson.fromJson(jsonArray.toString(),
                                     type);
 
-                            AdapterDiabeticmasterCur.setArrrayList_DiabeticCur(diabeticmastCurModelArray);
-                            AdapterDiabeticmasterCur.notifyDataSetChanged();
+                            adapterDiabeticCur.setArrrayList_DiabeticCur
+                                    (diabeticCurModelArrayList);
+                            adapterDiabeticCur.notifyDataSetChanged();
 
 
                             // getIcdConstArrayList.add(getIcdConstArrayList);
